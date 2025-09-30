@@ -8,8 +8,6 @@ services:
       POSTGRES_DB: dspace
       POSTGRES_USER: dspace
       POSTGRES_PASSWORD: dspace
-    networks:
-      dspacenet:
     ports:
     - published: 5432
       target: 5432
