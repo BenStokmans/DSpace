@@ -1,0 +1,133 @@
+<dspace-dc-types>
+
+    <dspace-header>
+        <title>Project Types</title>
+    </dspace-header>
+
+    <dc-schema>
+        <name>project</name>
+        <namespace>https://www.openaire.eu/cerif-profile/1.2/Project</namespace>
+    </dc-schema>
+
+    <!-- OpenAIRE CERIF: Project/Acronym -->
+    <dc-type>
+        <schema>project</schema>
+        <element>acronym</element>
+        <scope_note>The acronym or short name of the project.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Project/Title -->
+    <dc-type>
+        <schema>project</schema>
+        <element>title</element>
+        <scope_note>The full title of the project. Use xml:lang attribute for language specification.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Project/Identifier -->
+    <dc-type>
+        <schema>project</schema>
+        <element>identifier</element>
+        <scope_note>Generic project identifier.</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>project</schema>
+        <element>identifier</element>
+        <qualifier>project-reference</qualifier>
+        <scope_note>Project reference number (e.g., grant agreement number).</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>project</schema>
+        <element>identifier</element>
+        <qualifier>url</qualifier>
+        <scope_note>Project website URL.</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>project</schema>
+        <element>identifier</element>
+        <qualifier>grant-doi</qualifier>
+        <scope_note>Digital Object Identifier for the grant.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Project/StartDate -->
+    <dc-type>
+        <schema>project</schema>
+        <element>startDate</element>
+        <scope_note>The start date of the project (ISO 8601 format: YYYY-MM-DD).</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Project/EndDate -->
+    <dc-type>
+        <schema>project</schema>
+        <element>endDate</element>
+        <scope_note>The end date of the project (ISO 8601 format: YYYY-MM-DD).</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Project/Abstract -->
+    <dc-type>
+        <schema>project</schema>
+        <element>abstract</element>
+        <scope_note>The abstract or description of the project. Use xml:lang attribute for language specification.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Project/Keyword -->
+    <dc-type>
+        <schema>project</schema>
+        <element>keyword</element>
+        <scope_note>Keywords associated with the project. Use xml:lang attribute for language specification.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Project/Consortium/Coordinator -->
+    <dc-type>
+        <schema>project</schema>
+        <element>consortium</element>
+        <qualifier>coordinator</qualifier>
+        <scope_note>The coordinating organization of the project.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Project/Consortium/Partner -->
+    <dc-type>
+        <schema>project</schema>
+        <element>consortium</element>
+        <qualifier>partner</qualifier>
+        <scope_note>Partner organization in the project consortium.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Project/Funded/By -->
+    <dc-type>
+        <schema>project</schema>
+        <element>funder</element>
+        <scope_note>The organization that funds the project.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Project/Funded/As -->
+    <dc-type>
+        <schema>project</schema>
+        <element>funding</element>
+        <scope_note>Reference to the funding scheme under which the project is funded.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Project/OAMandate -->
+    <dc-type>
+        <schema>project</schema>
+        <element>oamandate</element>
+        <scope_note>Indicates whether the project has an Open Access mandate (true/false).</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>project</schema>
+        <element>oamandate</element>
+        <qualifier>uri</qualifier>
+        <scope_note>URI reference to the Open Access mandate policy.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Project/Uses -->
+    <dc-type>
+        <schema>project</schema>
+        <element>equipment</element>
+        <scope_note>Reference to equipment used in the project.</scope_note>
+    </dc-type>
+
+</dspace-dc-types>

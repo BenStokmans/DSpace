@@ -1,0 +1,43 @@
+<dspace-dc-types>
+
+    <dspace-header>
+        <title>Equipment Types</title>
+    </dspace-header>
+
+    <dc-schema>
+        <name>equipment</name>
+        <namespace>https://www.openaire.eu/cerif-profile/1.2/Equipment</namespace>
+    </dc-schema>
+
+    <!-- OpenAIRE CERIF: Equipment/Name -->
+    <dc-type>
+        <schema>equipment</schema>
+        <element>name</element>
+        <scope_note>The name or description of the equipment. Use xml:lang attribute for language specification.</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>equipment</schema>
+        <element>identifier</element>
+        <scope_note>Unique identifier for the equipment.</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>equipment</schema>
+        <element>description</element>
+        <scope_note>Detailed description of the equipment and its specifications.</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>equipment</schema>
+        <element>operator</element>
+        <scope_note>The organization or unit that operates the equipment.</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>equipment</schema>
+        <element>type</element>
+        <scope_note>The type or category of equipment.</scope_note>
+    </dc-type>
+
+</dspace-dc-types>

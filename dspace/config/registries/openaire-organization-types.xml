@@ -1,0 +1,75 @@
+<dspace-dc-types>
+
+    <dspace-header>
+        <title>Organization Unit Types</title>
+    </dspace-header>
+
+    <dc-schema>
+        <name>orgunit</name>
+        <namespace>https://www.openaire.eu/cerif-profile/1.2/OrgUnit</namespace>
+    </dc-schema>
+
+    <!-- OpenAIRE CERIF: OrgUnit/Acronym -->
+    <dc-type>
+        <schema>orgunit</schema>
+        <element>acronym</element>
+        <scope_note>The acronym or short name of the organization.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: OrgUnit/Name -->
+    <dc-type>
+        <schema>orgunit</schema>
+        <element>name</element>
+        <scope_note>The full name of the organization. Use xml:lang attribute for language specification.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: OrgUnit/ElectronicAddress -->
+    <dc-type>
+        <schema>orgunit</schema>
+        <element>electronicAddress</element>
+        <scope_note>The website URL or electronic address of the organization.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: OrgUnit/FundRefID -->
+    <dc-type>
+        <schema>orgunit</schema>
+        <element>identifier</element>
+        <qualifier>fundref</qualifier>
+        <scope_note>Crossref Funder Registry identifier (FundRef ID) as DOI.</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>orgunit</schema>
+        <element>identifier</element>
+        <scope_note>Generic organization identifier.</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>orgunit</schema>
+        <element>identifier</element>
+        <qualifier>ror</qualifier>
+        <scope_note>Research Organization Registry identifier.</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>orgunit</schema>
+        <element>identifier</element>
+        <qualifier>grid</qualifier>
+        <scope_note>Global Research Identifier Database ID.</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>orgunit</schema>
+        <element>identifier</element>
+        <qualifier>isni</qualifier>
+        <scope_note>International Standard Name Identifier for the organization.</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>orgunit</schema>
+        <element>identifier</element>
+        <qualifier>vat</qualifier>
+        <scope_note>VAT identification number.</scope_note>
+    </dc-type>
+
+</dspace-dc-types>

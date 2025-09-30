@@ -3,6 +3,10 @@
 
 <relationships>
 
+	<!-- ========================================
+	     PUBLICATION RELATIONSHIPS
+	     ======================================== -->
+
 	<!-- https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_creator.html 
 		The relation between a Publication and a Person regarding the authorship -->
 	<type>
@@ -17,6 +21,7 @@
 			<min>0</min>
 		</rightCardinality>
 	</type>
+
 	<!-- https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_creator.html 
 		The relation between a Publication and an Organization regarding the authorship -->
 	<type>
@@ -31,6 +36,21 @@
 			<min>0</min>
 		</rightCardinality>
 	</type>
+
+	<!-- The relation between a Publication and a Person regarding editorship -->
+	<type>
+		<leftType>Publication</leftType>
+		<rightType>Person</rightType>
+		<leftwardType>isEditorOfPublication</leftwardType>
+		<rightwardType>isPublicationOfEditor</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
 	<!-- https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_contributor.html 
 		The relation between a Publication and a Person regarding the contribution -->
 	<type>
@@ -45,6 +65,7 @@
 			<min>0</min>
 		</rightCardinality>
 	</type>
+
 	<!-- https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_contributor.html 
 		The relation between a Publication and an Organization regarding the contribution -->
 	<type>
@@ -59,8 +80,23 @@
 			<min>0</min>
 		</rightCardinality>
 	</type>
+
+	<!-- The relation between a Publication and an Organization regarding the publisher -->
+	<type>
+		<leftType>Publication</leftType>
+		<rightType>OrgUnit</rightType>
+		<leftwardType>isPublisherOfPublication</leftwardType>
+		<rightwardType>isPublicationOfPublisher</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
 	<!-- https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_projectid.html 
-		The relation between a Publication and an Organization regarding the Funder -->
+		The relation between a Publication and a Project regarding project funding -->
 	<type>
 		<leftType>Publication</leftType>
 		<rightType>Project</rightType>
@@ -73,13 +109,775 @@
 			<min>0</min>
 		</rightCardinality>
 	</type>
+
+	<!-- The relation between a Publication and another Publication (journal, proceedings, etc.) -->
+	<type>
+		<leftType>Publication</leftType>
+		<rightType>Publication</rightType>
+		<leftwardType>isPartOfPublication</leftwardType>
+		<rightwardType>isPublicationPartOf</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+			<max>1</max>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between a Publication and a Product (dataset, software) that it references -->
+	<type>
+		<leftType>Publication</leftType>
+		<rightType>Product</rightType>
+		<leftwardType>isReferencedByPublication</leftwardType>
+		<rightwardType>isPublicationReferencedBy</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between Publications (citations, references) -->
+	<type>
+		<leftType>Publication</leftType>
+		<rightType>Publication</rightType>
+		<leftwardType>references</leftwardType>
+		<rightwardType>isReferencedBy</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between a Publication and an Event (conference, workshop, etc.) -->
+	<type>
+		<leftType>Publication</leftType>
+		<rightType>Event</rightType>
+		<leftwardType>isEventOfPublication</leftwardType>
+		<rightwardType>isPublicationOfEvent</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between a Publication and a Funding scheme -->
+	<type>
+		<leftType>Publication</leftType>
+		<rightType>Funding</rightType>
+		<leftwardType>isFundingOfPublication</leftwardType>
+		<rightwardType>isPublicationOfFunding</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- ========================================
+	     PRODUCT (DATASET/SOFTWARE) RELATIONSHIPS
+	     ======================================== -->
+
+	<!-- The relation between a Product and a Person regarding creation -->
+	<type>
+		<leftType>Product</leftType>
+		<rightType>Person</rightType>
+		<leftwardType>isCreatorOfProduct</leftwardType>
+		<rightwardType>isProductOfCreator</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between a Product and an Organization regarding creation -->
+	<type>
+		<leftType>Product</leftType>
+		<rightType>OrgUnit</rightType>
+		<leftwardType>isCreatorOfProduct</leftwardType>
+		<rightwardType>isProductOfCreator</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between a Product and a Person regarding contribution -->
+	<type>
+		<leftType>Product</leftType>
+		<rightType>Person</rightType>
+		<leftwardType>isContributorOfProduct</leftwardType>
+		<rightwardType>isProductOfContributor</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between a Product and an Organization regarding contribution -->
+	<type>
+		<leftType>Product</leftType>
+		<rightType>OrgUnit</rightType>
+		<leftwardType>isContributorOfProduct</leftwardType>
+		<rightwardType>isProductOfContributor</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between a Product and a Project -->
+	<type>
+		<leftType>Product</leftType>
+		<rightType>Project</rightType>
+		<leftwardType>isProjectOfProduct</leftwardType>
+		<rightwardType>isProductOfProject</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between a Product and Equipment used to generate it -->
+	<type>
+		<leftType>Product</leftType>
+		<rightType>Equipment</rightType>
+		<leftwardType>isEquipmentOfProduct</leftwardType>
+		<rightwardType>isProductOfEquipment</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between Products (hierarchical - dataset and its files) -->
+	<type>
+		<leftType>Product</leftType>
+		<rightType>Product</rightType>
+		<leftwardType>isPartOfProduct</leftwardType>
+		<rightwardType>isProductPartOf</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+			<max>1</max>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between a Product and an Organization hosting it -->
+	<type>
+		<leftType>Product</leftType>
+		<rightType>OrgUnit</rightType>
+		<leftwardType>isHostedByOrgUnit</leftwardType>
+		<rightwardType>isHostingProduct</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between a Product and a Publication that references it -->
+	<type>
+		<leftType>Product</leftType>
+		<rightType>Publication</rightType>
+		<leftwardType>isPublicationOfProduct</leftwardType>
+		<rightwardType>isProductOfPublication</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between a Product and a Funding scheme -->
+	<type>
+		<leftType>Product</leftType>
+		<rightType>Funding</rightType>
+		<leftwardType>isFundingOfProduct</leftwardType>
+		<rightwardType>isProductOfFunding</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- ========================================
+	     PROJECT RELATIONSHIPS
+	     ======================================== -->
+
 	<!-- https://openaire-guidelines-for-literature-repository-managers.readthedocs.io/en/v4.0.0/field_projectid.html 
-		The relation between a Funded Project and an Organization regarding the Funder -->
+		The relation between a Project and an Organization regarding the Funder -->
 	<type>
 		<leftType>Project</leftType>
 		<rightType>OrgUnit</rightType>
 		<leftwardType>isFundingAgencyOfProject</leftwardType>
 		<rightwardType>isProjectOfFundingAgency</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between a Project and an Organization regarding coordination -->
+	<type>
+		<leftType>Project</leftType>
+		<rightType>OrgUnit</rightType>
+		<leftwardType>isCoordinatorOfProject</leftwardType>
+		<rightwardType>isProjectOfCoordinator</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+			<max>1</max>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between a Project and an Organization regarding partnership -->
+	<type>
+		<leftType>Project</leftType>
+		<rightType>OrgUnit</rightType>
+		<leftwardType>isPartnerOfProject</leftwardType>
+		<rightwardType>isProjectOfPartner</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between a Project and a Person (researcher, PI, etc.) -->
+	<type>
+		<leftType>Project</leftType>
+		<rightType>Person</rightType>
+		<leftwardType>isResearcherOfProject</leftwardType>
+		<rightwardType>isProjectOfResearcher</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between a Project and a Person as Principal Investigator -->
+	<type>
+		<leftType>Project</leftType>
+		<rightType>Person</rightType>
+		<leftwardType>isPrincipalInvestigatorOfProject</leftwardType>
+		<rightwardType>isProjectOfPrincipalInvestigator</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between a Project and Equipment used in it -->
+	<type>
+		<leftType>Project</leftType>
+		<rightType>Equipment</rightType>
+		<leftwardType>isEquipmentOfProject</leftwardType>
+		<rightwardType>isProjectOfEquipment</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between a Project and a Funding scheme -->
+	<type>
+		<leftType>Project</leftType>
+		<rightType>Funding</rightType>
+		<leftwardType>isFundingOfProject</leftwardType>
+		<rightwardType>isProjectOfFunding</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between a Project and a Publication -->
+	<type>
+		<leftType>Project</leftType>
+		<rightType>Publication</rightType>
+		<leftwardType>isPublicationOfProject</leftwardType>
+		<rightwardType>isProjectOfPublication</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between a Project and a Product -->
+	<type>
+		<leftType>Project</leftType>
+		<rightType>Product</rightType>
+		<leftwardType>isProductOfProject</leftwardType>
+		<rightwardType>isProjectOfProduct</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- ========================================
+	     PERSON RELATIONSHIPS
+	     ======================================== -->
+
+	<!-- The relation between a Person and an Organization regarding affiliation -->
+	<type>
+		<leftType>Person</leftType>
+		<rightType>OrgUnit</rightType>
+		<leftwardType>isAffiliationOfPerson</leftwardType>
+		<rightwardType>isPersonOfAffiliation</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between a Person and a Publication as author -->
+	<type>
+		<leftType>Person</leftType>
+		<rightType>Publication</rightType>
+		<leftwardType>isPublicationOfAuthor</leftwardType>
+		<rightwardType>isAuthorOfPublication</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between a Person and a Publication as editor -->
+	<type>
+		<leftType>Person</leftType>
+		<rightType>Publication</rightType>
+		<leftwardType>isPublicationOfEditor</leftwardType>
+		<rightwardType>isEditorOfPublication</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between a Person and a Publication as contributor -->
+	<type>
+		<leftType>Person</leftType>
+		<rightType>Publication</rightType>
+		<leftwardType>isPublicationOfContributor</leftwardType>
+		<rightwardType>isContributorOfPublication</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between a Person and a Product as creator -->
+	<type>
+		<leftType>Person</leftType>
+		<rightType>Product</rightType>
+		<leftwardType>isProductOfCreator</leftwardType>
+		<rightwardType>isCreatorOfProduct</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between a Person and a Product as contributor -->
+	<type>
+		<leftType>Person</leftType>
+		<rightType>Product</rightType>
+		<leftwardType>isProductOfContributor</leftwardType>
+		<rightwardType>isContributorOfProduct</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between a Person and a Project -->
+	<type>
+		<leftType>Person</leftType>
+		<rightType>Project</rightType>
+		<leftwardType>isProjectOfResearcher</leftwardType>
+		<rightwardType>isResearcherOfProject</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between Persons (supervisor, colleague, etc.) -->
+	<type>
+		<leftType>Person</leftType>
+		<rightType>Person</rightType>
+		<leftwardType>isRelatedToPerson</leftwardType>
+		<rightwardType>isRelatedToPerson</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- ========================================
+	     ORGANIZATION UNIT RELATIONSHIPS
+	     ======================================== -->
+
+	<!-- The relation between Organizations (hierarchical structure) -->
+	<type>
+		<leftType>OrgUnit</leftType>
+		<rightType>OrgUnit</rightType>
+		<leftwardType>isPartOfOrgUnit</leftwardType>
+		<rightwardType>isOrgUnitPartOf</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+			<max>1</max>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between an Organization and a Person -->
+	<type>
+		<leftType>OrgUnit</leftType>
+		<rightType>Person</rightType>
+		<leftwardType>isPersonOfAffiliation</leftwardType>
+		<rightwardType>isAffiliationOfPerson</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between an Organization and a Project as funder -->
+	<type>
+		<leftType>OrgUnit</leftType>
+		<rightType>Project</rightType>
+		<leftwardType>isProjectOfFundingAgency</leftwardType>
+		<rightwardType>isFundingAgencyOfProject</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between an Organization and a Project as coordinator -->
+	<type>
+		<leftType>OrgUnit</leftType>
+		<rightType>Project</rightType>
+		<leftwardType>isProjectOfCoordinator</leftwardType>
+		<rightwardType>isCoordinatorOfProject</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between an Organization and a Project as partner -->
+	<type>
+		<leftType>OrgUnit</leftType>
+		<rightType>Project</rightType>
+		<leftwardType>isProjectOfPartner</leftwardType>
+		<rightwardType>isPartnerOfProject</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between an Organization and a Publication as publisher -->
+	<type>
+		<leftType>OrgUnit</leftType>
+		<rightType>Publication</rightType>
+		<leftwardType>isPublicationOfPublisher</leftwardType>
+		<rightwardType>isPublisherOfPublication</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between an Organization and a Product as host -->
+	<type>
+		<leftType>OrgUnit</leftType>
+		<rightType>Product</rightType>
+		<leftwardType>isHostingProduct</leftwardType>
+		<rightwardType>isHostedByOrgUnit</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between an Organization and a Funding scheme -->
+	<type>
+		<leftType>OrgUnit</leftType>
+		<rightType>Funding</rightType>
+		<leftwardType>isFundingOfOrgUnit</leftwardType>
+		<rightwardType>isOrgUnitOfFunding</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between an Organization and Equipment -->
+	<type>
+		<leftType>OrgUnit</leftType>
+		<rightType>Equipment</rightType>
+		<leftwardType>isEquipmentOfOrgUnit</leftwardType>
+		<rightwardType>isOrgUnitOfEquipment</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- ========================================
+	     FUNDING RELATIONSHIPS
+	     ======================================== -->
+
+	<!-- The relation between Funding schemes (hierarchical - program, call, contract) -->
+	<type>
+		<leftType>Funding</leftType>
+		<rightType>Funding</rightType>
+		<leftwardType>isPartOfFunding</leftwardType>
+		<rightwardType>isFundingPartOf</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+			<max>1</max>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between a Funding and an Organization as funder -->
+	<type>
+		<leftType>Funding</leftType>
+		<rightType>OrgUnit</rightType>
+		<leftwardType>isOrgUnitOfFunding</leftwardType>
+		<rightwardType>isFundingOfOrgUnit</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between a Funding and a Project -->
+	<type>
+		<leftType>Funding</leftType>
+		<rightType>Project</rightType>
+		<leftwardType>isProjectOfFunding</leftwardType>
+		<rightwardType>isFundingOfProject</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between a Funding and a Publication -->
+	<type>
+		<leftType>Funding</leftType>
+		<rightType>Publication</rightType>
+		<leftwardType>isPublicationOfFunding</leftwardType>
+		<rightwardType>isFundingOfPublication</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between a Funding and a Product -->
+	<type>
+		<leftType>Funding</leftType>
+		<rightType>Product</rightType>
+		<leftwardType>isProductOfFunding</leftwardType>
+		<rightwardType>isFundingOfProduct</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- ========================================
+	     EQUIPMENT RELATIONSHIPS
+	     ======================================== -->
+
+	<!-- The relation between Equipment and a Project -->
+	<type>
+		<leftType>Equipment</leftType>
+		<rightType>Project</rightType>
+		<leftwardType>isProjectOfEquipment</leftwardType>
+		<rightwardType>isEquipmentOfProject</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between Equipment and a Product -->
+	<type>
+		<leftType>Equipment</leftType>
+		<rightType>Product</rightType>
+		<leftwardType>isProductOfEquipment</leftwardType>
+		<rightwardType>isEquipmentOfProduct</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between Equipment and an Organization (operator) -->
+	<type>
+		<leftType>Equipment</leftType>
+		<rightType>OrgUnit</rightType>
+		<leftwardType>isOrgUnitOfEquipment</leftwardType>
+		<rightwardType>isEquipmentOfOrgUnit</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- ========================================
+	     EVENT RELATIONSHIPS
+	     ======================================== -->
+
+	<!-- The relation between an Event and a Publication -->
+	<type>
+		<leftType>Event</leftType>
+		<rightType>Publication</rightType>
+		<leftwardType>isPublicationOfEvent</leftwardType>
+		<rightwardType>isEventOfPublication</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between an Event and an Organization (organizer, sponsor) -->
+	<type>
+		<leftType>Event</leftType>
+		<rightType>OrgUnit</rightType>
+		<leftwardType>isOrganizerOfEvent</leftwardType>
+		<rightwardType>isEventOfOrganizer</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between an Event and a Person (organizer, speaker) -->
+	<type>
+		<leftType>Event</leftType>
+		<rightType>Person</rightType>
+		<leftwardType>isPersonOfEvent</leftwardType>
+		<rightwardType>isEventOfPerson</rightwardType>
+		<leftCardinality>
+			<min>0</min>
+		</leftCardinality>
+		<rightCardinality>
+			<min>0</min>
+		</rightCardinality>
+	</type>
+
+	<!-- The relation between an Event and a Project (sponsor) -->
+	<type>
+		<leftType>Event</leftType>
+		<rightType>Project</rightType>
+		<leftwardType>isProjectOfEvent</leftwardType>
+		<rightwardType>isEventOfProject</rightwardType>
 		<leftCardinality>
 			<min>0</min>
 		</leftCardinality>

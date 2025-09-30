@@ -1,0 +1,22 @@
+services:
+  dspacedb:
+    container_name: dspacedb
+    # Uses the base PostgreSQL image
+    image: "docker.io/postgres:${POSTGRES_VERSION:-15}"
+    environment:
+      PGDATA: /pgdata
+      POSTGRES_DB: dspace
+      POSTGRES_USER: dspace
+      POSTGRES_PASSWORD: dspace
+    networks:
+      dspacenet:
+    ports:
+    - published: 5432
+      target: 5432
+    stdin_open: true
+    tty: true
+    volumes:
+    # Keep Postgres data directory between reboots
+    - pgdata:/pgdata
+volumes:
+  pgdata:

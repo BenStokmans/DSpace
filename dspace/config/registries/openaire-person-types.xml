@@ -1,0 +1,172 @@
+<dspace-dc-types>
+
+    <dspace-header>
+        <title>Person Types</title>
+    </dspace-header>
+
+    <dc-schema>
+        <name>person</name>
+        <namespace>https://www.openaire.eu/cerif-profile/1.2/Person</namespace>
+    </dc-schema>
+
+    <!-- OpenAIRE CERIF: Person/PersonName/FamilyNames -->
+    <dc-type>
+        <schema>person</schema>
+        <element>familyName</element>
+        <scope_note>Family name. In the U.S., the last name of a Person. This can be used along with givenName instead of the name property.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Person/PersonName/FirstNames -->
+    <dc-type>
+        <schema>person</schema>
+        <element>givenName</element>
+        <scope_note>Given name. In the U.S., the first name of a Person. This can be used along with familyName instead of the name property.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Person/ORCID -->
+    <dc-type>
+        <schema>person</schema>
+        <element>identifier</element>
+        <qualifier>orcid</qualifier>
+        <scope_note>Open Researcher and Contributor ID (https://orcid.org/).</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Person/ResearcherID -->
+    <dc-type>
+        <schema>person</schema>
+        <element>identifier</element>
+        <qualifier>rid</qualifier>
+        <scope_note>Web of Science ResearcherID.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Person/ScopusAuthorID -->
+    <dc-type>
+        <schema>person</schema>
+        <element>identifier</element>
+        <qualifier>scopus-author-id</qualifier>
+        <scope_note>Scopus Author ID.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Person/ISNI -->
+    <dc-type>
+        <schema>person</schema>
+        <element>identifier</element>
+        <qualifier>isni</qualifier>
+        <scope_note>International Standard Name Identifier.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Person/DAI -->
+    <dc-type>
+        <schema>person</schema>
+        <element>identifier</element>
+        <qualifier>dai</qualifier>
+        <scope_note>Digital Author Identifier (Dutch national identifier).</scope_note>
+    </dc-type>
+
+    <!-- Generic identifier with type -->
+    <dc-type>
+        <schema>person</schema>
+        <element>identifier</element>
+        <scope_note>Generic person identifier. Use qualifiers for specific identifier types.</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>person</schema>
+        <element>identifier</element>
+        <qualifier>gsid</qualifier>
+        <scope_note>Google Scholar ID.</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>person</schema>
+        <element>identifier</element>
+        <qualifier>ciencia-id</qualifier>
+        <scope_note>Portuguese Ciência ID - permanent identification for researchers in Portugal.</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>person</schema>
+        <element>identifier</element>
+        <qualifier>research-gate-id</qualifier>
+        <scope_note>ResearchGate profile identifier.</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>person</schema>
+        <element>identifier</element>
+        <qualifier>twitter-id</qualifier>
+        <scope_note>Twitter profile identifier.</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>person</schema>
+        <element>identifier</element>
+        <qualifier>facebook-id</qualifier>
+        <scope_note>Facebook profile identifier.</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>person</schema>
+        <element>identifier</element>
+        <qualifier>linkedin-id</qualifier>
+        <scope_note>LinkedIn profile identifier.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Person/ElectronicAddress -->
+    <dc-type>
+        <schema>person</schema>
+        <element>email</element>
+        <scope_note>Email address (mailto: URI).</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>person</schema>
+        <element>telephone</element>
+        <scope_note>Telephone number (tel: URI).</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>person</schema>
+        <element>fax</element>
+        <scope_note>Fax number (fax: URI).</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>person</schema>
+        <element>electronicAddress</element>
+        <scope_note>Generic electronic address (URL, email, telephone, fax, etc.).</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Person/Affiliation -->
+    <dc-type>
+        <schema>person</schema>
+        <element>affiliation</element>
+        <scope_note>Reference to the organization unit the person is affiliated with.</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>person</schema>
+        <element>affiliation</element>
+        <qualifier>name</qualifier>
+        <scope_note>The name of the organizational or institutional affiliation.</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>person</schema>
+        <element>birthDate</element>
+        <scope_note>Date of birth (ISO 8601 format).</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>person</schema>
+        <element>jobTitle</element>
+        <scope_note>The job title of the person (e.g., Financial Manager).</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>person</schema>
+        <element>knowsLanguage</element>
+        <scope_note>Languages known by the person. Use IETF BCP 47 language codes.</scope_note>
+    </dc-type>
+
+</dspace-dc-types>

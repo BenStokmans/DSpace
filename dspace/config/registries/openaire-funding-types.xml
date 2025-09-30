@@ -1,0 +1,83 @@
+<dspace-dc-types>
+
+    <dspace-header>
+        <title>Funding Types</title>
+    </dspace-header>
+
+    <dc-schema>
+        <name>funding</name>
+        <namespace>https://www.openaire.eu/cerif-profile/1.2/Funding</namespace>
+    </dc-schema>
+
+    <!-- OpenAIRE CERIF: Funding/Type -->
+    <dc-type>
+        <schema>funding</schema>
+        <element>type</element>
+        <scope_note>The type of funding (e.g., Contract, Call, FundingProgramme).</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Funding/Acronym -->
+    <dc-type>
+        <schema>funding</schema>
+        <element>acronym</element>
+        <scope_note>The acronym of the funding programme or scheme.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Funding/Name -->
+    <dc-type>
+        <schema>funding</schema>
+        <element>name</element>
+        <scope_note>The full name of the funding programme or scheme. Use xml:lang attribute for language specification.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Funding/GrantDOI -->
+    <dc-type>
+        <schema>funding</schema>
+        <element>grantDOI</element>
+        <scope_note>Digital Object Identifier for the grant.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Funding/Duration -->
+    <dc-type>
+        <schema>funding</schema>
+        <element>duration</element>
+        <qualifier>startDate</qualifier>
+        <scope_note>The start date of the funding (ISO 8601 format).</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>funding</schema>
+        <element>duration</element>
+        <qualifier>endDate</qualifier>
+        <scope_note>The end date of the funding (ISO 8601 format).</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Funding/PartOf -->
+    <dc-type>
+        <schema>funding</schema>
+        <element>partOf</element>
+        <scope_note>Reference to parent funding programme in hierarchical funding structure.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Funding/OAMandate -->
+    <dc-type>
+        <schema>funding</schema>
+        <element>oamandate</element>
+        <scope_note>Indicates whether the funding has an Open Access mandate (true/false).</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>funding</schema>
+        <element>oamandate</element>
+        <qualifier>uri</qualifier>
+        <scope_note>URI reference to the Open Access mandate policy.</scope_note>
+    </dc-type>
+
+    <!-- Generic identifier -->
+    <dc-type>
+        <schema>funding</schema>
+        <element>identifier</element>
+        <scope_note>Generic funding identifier.</scope_note>
+    </dc-type>
+
+</dspace-dc-types>

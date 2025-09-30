@@ -1,0 +1,204 @@
+<dspace-dc-types>
+
+    <dspace-header>
+        <title>Product Types (Research Datasets and Products)</title>
+    </dspace-header>
+
+    <dc-schema>
+        <name>product</name>
+        <namespace>https://www.openaire.eu/cerif-profile/1.2/Product</namespace>
+    </dc-schema>
+
+    <!-- OpenAIRE CERIF: Product/Type -->
+    <dc-type>
+        <schema>product</schema>
+        <element>type</element>
+        <scope_note>The type of research product from COAR vocabulary (e.g., dataset, software, workflow, etc.).</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Product/Name -->
+    <dc-type>
+        <schema>product</schema>
+        <element>name</element>
+        <scope_note>The name or title of the research product. Use xml:lang attribute for language specification.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Product/VersionInfo -->
+    <dc-type>
+        <schema>product</schema>
+        <element>versionInfo</element>
+        <scope_note>Version information for the research product.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Product/DOI -->
+    <dc-type>
+        <schema>product</schema>
+        <element>identifier</element>
+        <qualifier>doi</qualifier>
+        <scope_note>Digital Object Identifier for the product.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Product/URL -->
+    <dc-type>
+        <schema>product</schema>
+        <element>identifier</element>
+        <qualifier>url</qualifier>
+        <scope_note>URL where the product can be accessed.</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>product</schema>
+        <element>identifier</element>
+        <scope_note>Generic product identifier.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Product/Description -->
+    <dc-type>
+        <schema>product</schema>
+        <element>description</element>
+        <scope_note>Description of the research product. Use xml:lang attribute for language specification.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Product/Keyword -->
+    <dc-type>
+        <schema>product</schema>
+        <element>keyword</element>
+        <scope_note>Keywords associated with the product. Use xml:lang attribute for language specification.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Product/Creators -->
+    <dc-type>
+        <schema>product</schema>
+        <element>creator</element>
+        <scope_note>Reference to a person who created the product.</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>product</schema>
+        <element>creator</element>
+        <qualifier>name</qualifier>
+        <scope_note>Display name of the creator.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Product/OriginatesFrom -->
+    <dc-type>
+        <schema>product</schema>
+        <element>project</element>
+        <scope_note>Reference to the project from which the product originates.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Product/GeneratedBy -->
+    <dc-type>
+        <schema>product</schema>
+        <element>equipment</element>
+        <scope_note>Reference to equipment used to generate the product.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Product/License -->
+    <dc-type>
+        <schema>product</schema>
+        <element>license</element>
+        <scope_note>License information for the product (e.g., SPDX identifier).</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>product</schema>
+        <element>license</element>
+        <qualifier>uri</qualifier>
+        <scope_note>URI of the license.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Product/Access -->
+    <dc-type>
+        <schema>product</schema>
+        <element>access</element>
+        <scope_note>Access rights information from COAR vocabulary (e.g., open access, restricted access, embargoed access).</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Product/Dates -->
+    <dc-type>
+        <schema>product</schema>
+        <element>date</element>
+        <qualifier>collected</qualifier>
+        <scope_note>Date or date range when data was collected.</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>product</schema>
+        <element>date</element>
+        <qualifier>collected-start</qualifier>
+        <scope_note>Start date of data collection period (ISO 8601 format).</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>product</schema>
+        <element>date</element>
+        <qualifier>collected-end</qualifier>
+        <scope_note>End date of data collection period (ISO 8601 format).</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>product</schema>
+        <element>date</element>
+        <qualifier>available</qualifier>
+        <scope_note>Date when the product became available.</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>product</schema>
+        <element>date</element>
+        <qualifier>available-start</qualifier>
+        <scope_note>Start date of availability (ISO 8601 format).</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Product/PartOf -->
+    <dc-type>
+        <schema>product</schema>
+        <element>partOf</element>
+        <scope_note>Reference to parent product (for hierarchical relationships).</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Product/FileLocations/Medium -->
+    <dc-type>
+        <schema>product</schema>
+        <element>file</element>
+        <qualifier>title</qualifier>
+        <scope_note>Title or filename of a file associated with the product.</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>product</schema>
+        <element>file</element>
+        <qualifier>uri</qualifier>
+        <scope_note>URI where the file can be accessed.</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>product</schema>
+        <element>file</element>
+        <qualifier>mimetype</qualifier>
+        <scope_note>MIME type of the file.</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>product</schema>
+        <element>file</element>
+        <qualifier>license</qualifier>
+        <scope_note>License for a specific file.</scope_note>
+    </dc-type>
+
+    <!-- Contributors -->
+    <dc-type>
+        <schema>product</schema>
+        <element>contributor</element>
+        <scope_note>Generic contributor to the product.</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>product</schema>
+        <element>contributor</element>
+        <qualifier>hosting-institution</qualifier>
+        <scope_note>Institution hosting the product.</scope_note>
+    </dc-type>
+
+</dspace-dc-types>

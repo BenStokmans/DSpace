@@ -1,0 +1,288 @@
+<dspace-dc-types>
+
+    <dspace-header>
+        <title>Publication Types</title>
+    </dspace-header>
+
+    <dc-schema>
+        <name>publication</name>
+        <namespace>https://www.openaire.eu/cerif-profile/1.2/Publication</namespace>
+    </dc-schema>
+
+    <!-- OpenAIRE CERIF: Publication/Type -->
+    <dc-type>
+        <schema>publication</schema>
+        <element>type</element>
+        <scope_note>The type of publication from COAR vocabulary (e.g., journal article, conference paper, book, etc.).</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Publication/Language -->
+    <dc-type>
+        <schema>publication</schema>
+        <element>language</element>
+        <scope_note>Language of the publication (ISO 639 code).</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Publication/Title -->
+    <dc-type>
+        <schema>publication</schema>
+        <element>title</element>
+        <scope_note>The title of the publication. Use xml:lang attribute for language specification.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Publication/Subtitle -->
+    <dc-type>
+        <schema>publication</schema>
+        <element>subtitle</element>
+        <scope_note>The subtitle of the publication. Use xml:lang attribute for language specification.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Publication/NameAbbreviation -->
+    <dc-type>
+        <schema>publication</schema>
+        <element>nameAbbreviation</element>
+        <scope_note>Abbreviated name of the publication (e.g., journal abbreviation).</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Publication/PublishedIn -->
+    <dc-type>
+        <schema>publication</schema>
+        <element>publishedIn</element>
+        <scope_note>Reference to the parent publication (journal, book, conference proceedings).</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Publication/PublicationDate -->
+    <dc-type>
+        <schema>publication</schema>
+        <element>publicationDate</element>
+        <scope_note>Date of publication (ISO 8601 format: YYYY-MM-DD).</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Publication/Volume -->
+    <dc-type>
+        <schema>publication</schema>
+        <element>volume</element>
+        <scope_note>Volume number of the journal or book series.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Publication/Issue -->
+    <dc-type>
+        <schema>publication</schema>
+        <element>issue</element>
+        <scope_note>Issue number of the journal.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Publication/StartPage -->
+    <dc-type>
+        <schema>publication</schema>
+        <element>startPage</element>
+        <scope_note>Starting page number in the publication.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Publication/EndPage -->
+    <dc-type>
+        <schema>publication</schema>
+        <element>endPage</element>
+        <scope_note>Ending page number in the publication.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Publication/DOI -->
+    <dc-type>
+        <schema>publication</schema>
+        <element>identifier</element>
+        <qualifier>doi</qualifier>
+        <scope_note>Digital Object Identifier for the publication.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Publication/ISSN -->
+    <dc-type>
+        <schema>publication</schema>
+        <element>identifier</element>
+        <qualifier>issn</qualifier>
+        <scope_note>International Standard Serial Number.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Publication/ISBN -->
+    <dc-type>
+        <schema>publication</schema>
+        <element>identifier</element>
+        <qualifier>isbn</qualifier>
+        <scope_note>International Standard Book Number.</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>publication</schema>
+        <element>identifier</element>
+        <qualifier>isbn-print</qualifier>
+        <scope_note>ISBN for print medium.</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>publication</schema>
+        <element>identifier</element>
+        <qualifier>isbn-online</qualifier>
+        <scope_note>ISBN for online/electronic medium.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Publication/ZDB-ID -->
+    <dc-type>
+        <schema>publication</schema>
+        <element>identifier</element>
+        <qualifier>zdb-id</qualifier>
+        <scope_note>German Zeitschriftendatenbank (Journal Database) identifier.</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>publication</schema>
+        <element>identifier</element>
+        <scope_note>Generic publication identifier.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Publication/Authors -->
+    <dc-type>
+        <schema>publication</schema>
+        <element>author</element>
+        <scope_note>Reference to a person who authored the publication.</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>publication</schema>
+        <element>author</element>
+        <qualifier>name</qualifier>
+        <scope_note>Display name of the author.</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>publication</schema>
+        <element>author</element>
+        <qualifier>affiliation</qualifier>
+        <scope_note>Affiliation of the author at the time of publication.</scope_note>
+    </dc-type>
+
+    <!-- Editors -->
+    <dc-type>
+        <schema>publication</schema>
+        <element>editor</element>
+        <scope_note>Reference to a person who edited the publication.</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>publication</schema>
+        <element>editor</element>
+        <qualifier>name</qualifier>
+        <scope_note>Display name of the editor.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Publication/Publishers -->
+    <dc-type>
+        <schema>publication</schema>
+        <element>publisher</element>
+        <scope_note>Reference to the organization that published the work.</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>publication</schema>
+        <element>publisher</element>
+        <qualifier>name</qualifier>
+        <scope_note>Display name of the publisher.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Publication/License -->
+    <dc-type>
+        <schema>publication</schema>
+        <element>license</element>
+        <scope_note>License information for the publication (e.g., SPDX identifier, Creative Commons).</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>publication</schema>
+        <element>license</element>
+        <qualifier>uri</qualifier>
+        <scope_note>URI of the license.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Publication/Abstract -->
+    <dc-type>
+        <schema>publication</schema>
+        <element>abstract</element>
+        <scope_note>Abstract or summary of the publication. Use xml:lang attribute for language specification.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Publication/Keyword -->
+    <dc-type>
+        <schema>publication</schema>
+        <element>keyword</element>
+        <scope_note>Keywords associated with the publication. Use xml:lang attribute for language specification.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Publication/OriginatesFrom -->
+    <dc-type>
+        <schema>publication</schema>
+        <element>project</element>
+        <scope_note>Reference to the project from which the publication originates.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Publication/References -->
+    <dc-type>
+        <schema>publication</schema>
+        <element>references</element>
+        <scope_note>Reference to related products (datasets, software) or publications.</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>publication</schema>
+        <element>references</element>
+        <qualifier>dataset</qualifier>
+        <scope_note>Reference to a dataset associated with the publication.</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>publication</schema>
+        <element>references</element>
+        <qualifier>publication</qualifier>
+        <scope_note>Reference to another related publication.</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Publication/Access -->
+    <dc-type>
+        <schema>publication</schema>
+        <element>access</element>
+        <scope_note>Access rights information from COAR vocabulary (e.g., open access, embargoed access, restricted access, metadata only access).</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>publication</schema>
+        <element>access</element>
+        <qualifier>embargo-end-date</qualifier>
+        <scope_note>End date of embargo period (ISO 8601 format).</scope_note>
+    </dc-type>
+
+    <!-- OpenAIRE CERIF: Publication/OutputFrom -->
+    <dc-type>
+        <schema>publication</schema>
+        <element>event</element>
+        <scope_note>Reference to an event (e.g., conference) from which the publication is an output.</scope_note>
+    </dc-type>
+
+    <!-- Version information -->
+    <dc-type>
+        <schema>publication</schema>
+        <element>version</element>
+        <scope_note>Version information for the publication (e.g., preprint, postprint, published version).</scope_note>
+    </dc-type>
+
+    <!-- Funding information -->
+    <dc-type>
+        <schema>publication</schema>
+        <element>funding</element>
+        <scope_note>Reference to funding that supported the publication.</scope_note>
+    </dc-type>
+
+    <!-- Citation -->
+    <dc-type>
+        <schema>publication</schema>
+        <element>citation</element>
+        <scope_note>Bibliographic citation for the publication.</scope_note>
+    </dc-type>
+
+</dspace-dc-types>
