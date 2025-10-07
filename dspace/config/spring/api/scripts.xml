@@ -108,4 +108,9 @@
         <property name="dspaceRunnableClass" value="org.dspace.app.suggestion.runnable.PublicationLoaderRunnableCli"/>
     </bean>
 
+    <bean id="raid-project-export"
+          class="org.dspace.app.raid.RaidProjectExport">
+        <property name="description" value="Exports RAID project data for synchronization with external systems"/>
+        <property name="dspaceRunnableClass" value="org.dspace.app.raid.RaidProjectExportCli"/>
+    </bean>
 </beans>
