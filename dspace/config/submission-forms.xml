@@ -1218,7 +1218,7 @@
                     <hint>Enter the URL of the project webpage</hint>
                 </field>
             </row>
-            <row>
+            <!-- <row>
                 <relation-field>
                     <relationship-type>isFundingAgencyOfProject</relationship-type>
                     <search-configuration>openaireFundingAgency</search-configuration>
@@ -1235,7 +1235,7 @@
                     <externalsources></externalsources>
                     <required>One funding agency is required</required>
                 </relation-field>
-            </row>
+            </row> -->
             <row>
                 <field>
                     <dc-schema>oaire</dc-schema>
@@ -1243,13 +1243,6 @@
                     <label>Name of the Funding Stream</label>
                     <input-type>onebox</input-type>
                     <hint>Enter the name of the funding stream of the project</hint>
-                </field>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>identifier</dc-element>
-                    <label>Award number</label>
-                    <input-type>onebox</input-type>
-                    <hint>Enter the identifier of the project</hint>
                 </field>
             </row>
         </form>
