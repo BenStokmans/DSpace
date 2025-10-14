@@ -2,28 +2,27 @@ package org.dspace.app.raid;
 
 import org.apache.commons.cli.Options;
 import org.dspace.scripts.configuration.ScriptConfiguration;
+import org.dspace.scripts.DSpaceRunnable;
 
-public class RaidProjectExportConfiguration extends ScriptConfiguration {
-    // You can define options here (if arguments are needed), else leave minimal
+/**
+ * Configuration for the RAID export script.
+ */
+public class RaidProjectExportConfiguration
+        extends ScriptConfiguration<RaidProjectExport> {
+
     @Override
-    public String getName() {
-        return "raid-project-export";
+    public Class<RaidProjectExport> getDspaceRunnableClass() {
+        return RaidProjectExport.class;
     }
 
     @Override
-    public Class getDspaceRunnableClass() {
-        return null;
+    public void setDspaceRunnableClass(Class<RaidProjectExport> dspaceRunnableClass) {
+        // This setter is required, but you can ignore or store it if needed
     }
-
-    @Override
-    public void setDspaceRunnableClass(Class dspaceRunnableClass) {
-
-    }
-
-
 
     @Override
     public Options getOptions() {
-        return null;
+        // Return CLI options your script uses; return empty or null if none
+        return new Options();
     }
 }
