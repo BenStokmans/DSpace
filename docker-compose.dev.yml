@@ -1,0 +1,36 @@
+networks:
+  dspacenet:
+    ipam:
+      config:
+        # Define a custom subnet for our DSpace network, so that we can easily trust requests from host to container.
+        # If you customize this value, be sure to customize the 'proxies.trusted.ipranges' in your local.cfg
+        - subnet: 172.23.0.0/16
+
+services:
+  # DSpace PostgreSQL database container
+  dspacedb:
+    container_name: dspacedb-dev
+    # Uses a custom Postgres image with pgcrypto installed
+    image: "${DOCKER_REGISTRY:-docker.io}/${DOCKER_OWNER:-dspace}/dspace-postgres-pgcrypto:${DSPACE_VER:-dspace-8_x}"
+    build:
+      # Must build out of subdirectory to have access to install script for pgcrypto
+      context: ./dspace/src/main/docker/dspace-postgres-pgcrypto/
+    environment:
+      PGDATA: /pgdata
+      POSTGRES_PASSWORD: dspace
+      POSTGRES_USER: dspace
+      POSTGRES_DB: dspace
+    networks:
+      dspacenet:
+    ports:
+      # Expose PostgreSQL on localhost for your local DSpace instance
+      - "5432:5432"
+    stdin_open: true
+    tty: true
+    volumes:
+      # Keep Postgres data directory between reboots
+      - pgdata_dev:/pgdata
+
+volumes:
+  pgdata_dev:
+ 
