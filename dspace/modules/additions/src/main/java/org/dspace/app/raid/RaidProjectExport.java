@@ -111,7 +111,7 @@ public class RaidProjectExport extends DSpaceRunnable<RaidProjectExportConfigura
         raid.put("products", exportRelatedProducts(context, item));
 
         // Write to file
-        Path exportDir = Path.of(prop("raid.export.dir", "/Users/haans001/repos/dspace-install"));
+        Path exportDir = Path.of(prop("raid.export.dir", "./"));
         Files.createDirectories(exportDir);
         String fn = (item.getHandle() == null ? "item-" + item.getID() : item.getHandle().replace('/', '_')) + ".raid.json";
         Path out = exportDir.resolve(fn);
