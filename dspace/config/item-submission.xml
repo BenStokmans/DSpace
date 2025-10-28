@@ -56,10 +56,13 @@
             PLEASE NOTICE THAT YOU WILL HAVE TO RESTART DSPACE
             - - - - - -
         -->
-        <name-map collection-entity-type="Publication" submission-name="openairePublicationSubmission"/>
-        <name-map collection-entity-type="Person" submission-name="openairePersonSubmission"/>
-        <name-map collection-entity-type="Project" submission-name="openaireProjectSubmission"/>
-        <name-map collection-entity-type="OrgUnit" submission-name="openaireOrganizationSubmission"/>
+    <name-map collection-entity-type="Publication" submission-name="openairePublicationSubmission"/>
+    <name-map collection-entity-type="Person" submission-name="openairePersonSubmission"/>
+    <name-map collection-entity-type="Project" submission-name="openaireProjectSubmission"/>
+    <name-map collection-entity-type="OrgUnit" submission-name="openaireOrganizationSubmission"/>
+    <name-map collection-entity-type="Product" submission-name="openaireProductSubmission"/>
+    <name-map collection-entity-type="Funding" submission-name="openaireFundingSubmission"/>
+    <name-map collection-entity-type="Equipment" submission-name="openaireEquipmentSubmission"/>
 
         <!-- Example of configuration using a community handle to map an Item Submission Process.
 
@@ -213,6 +216,21 @@
             <type>submission-form</type>
         </step-definition>
         <step-definition id="openairePublicationPagetwoForm" mandatory="true">
+            <heading>submit.progressbar.describe.stepone</heading>
+            <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
+            <type>submission-form</type>
+        </step-definition>
+        <step-definition id="openaireProductForm" mandatory="true">
+            <heading>submit.progressbar.describe.stepone</heading>
+            <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
+            <type>submission-form</type>
+        </step-definition>
+        <step-definition id="openaireFundingForm" mandatory="true">
+            <heading>submit.progressbar.describe.stepone</heading>
+            <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
+            <type>submission-form</type>
+        </step-definition>
+        <step-definition id="openaireEquipmentForm" mandatory="true">
             <heading>submit.progressbar.describe.stepone</heading>
             <processing-class>org.dspace.app.rest.submit.step.DescribeStep</processing-class>
             <type>submission-form</type>
@@ -419,6 +437,21 @@
         <submission-process name="openaireOrganizationSubmission">
             <step id="collection"/>
             <step id="openaireOrganizationForm"/>
+        </submission-process>
+        <submission-process name="openaireProductSubmission">
+            <step id="collection"/>
+            <step id="openaireProductForm"/>
+            <step id="upload"/>
+            <step id="license"/>
+            <step id="cclicense"/>
+        </submission-process>
+        <submission-process name="openaireFundingSubmission">
+            <step id="collection"/>
+            <step id="openaireFundingForm"/>
+        </submission-process>
+        <submission-process name="openaireEquipmentSubmission">
+            <step id="collection"/>
+            <step id="openaireEquipmentForm"/>
         </submission-process>
     </submission-definitions>
 

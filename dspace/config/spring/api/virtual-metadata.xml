@@ -11,16 +11,12 @@
                  to its relationship's item and the map will define which virtual metadata fields
                  are to be added to the item that has a relationship with this relationship type-->
             <map>
-                <entry key="isAuthorOfPublication" value-ref="isAuthorOfPublicationMap"/>
-                <entry key="isOrgUnitOfPublication" value-ref="isOrgUnitOfPublicationMap"/>
-                <entry key="isPersonOfProject" value-ref="isPersonOfProjectMap"/>
-                <entry key="isOrgUnitOfProject" value-ref="isOrgUnitOfProjectMap"/>
-                <entry key="isOrgUnitOfPerson" value-ref="isOrgUnitOfPersonMap"/>
-                <entry key="isJournalVolumeOfIssue" value-ref="isJournalVolumeOfIssueMap"/>
-                <entry key="isJournalOfVolume" value-ref="isJournalOfVolumeMap"/>
-                <entry key="isVolumeOfJournal" value-ref="isVolumeOfJournalMap"/>
-                <entry key="isIssueOfJournalVolume" value-ref="isIssueOfJournalVolumeMap"/>
-                <entry key="isJournalIssueOfPublication" value-ref="isJournalIssueOfPublicationMap"/>
+                <entry key="isAuthorOfPublication" value-ref="isPublicationAuthorMap"/>
+                <entry key="isEditorOfPublication" value-ref="isPublicationEditorMap"/>
+                <entry key="isContributorOfPublication" value-ref="isPublicationContributorMap"/>
+                <entry key="isPublisherOfPublication" value-ref="isPublicationPublisherMap"/>
+                <entry key="isProjectOfPublication" value-ref="isProjectOfPublicationMap"/>
+                <entry key="isFundingAgencyOfProject" value-ref="isFundingAgencyOfProjectMap"/>
             </map>
         </property>
     </bean>
@@ -30,16 +26,59 @@
             <map>
                 <entry key="Publication" value="f.entityType=Publication,equals"/>
                 <entry key="Person" value="f.entityType=Person,equals"/>
+                <entry key="OrgUnit" value="f.entityType=OrgUnit,equals"/>
+                <entry key="Project" value="f.entityType=Project,equals"/>
+                <entry key="Product" value="f.entityType=Product,equals"/>
+                <entry key="Funding" value="f.entityType=Funding,equals"/>
+                <entry key="Event" value="f.entityType=Event,equals"/>
+                <entry key="Equipment" value="f.entityType=Equipment,equals"/>
                 <entry key="Journal" value="f.entityType=Journal,equals"/>
             </map>
         </property>
     </bean>
 
-    <!-- Config like this will tell our VirtualMetadataPopulator to include the virtual metadata field
-         'dc.contributor.author' on the appropriate item with the values defined in the value-ref.
+    <!-- Config like this will tell our VirtualMetadataPopulator to include the virtual metadata fields
+         like 'dc.contributor.author' and other specific for person.* on the appropriate item with the values 
+         defined in the value-ref.
           This value-ref should be a bean of type VirtualMetadataConfiguration -->
-    <util:map id="isAuthorOfPublicationMap">
-        <entry key="dc.contributor.author" value-ref="publicationAuthor_author"/>
+    <util:map id="isPublicationAuthorMap">
+        <entry key="dc.contributor.author" value-ref="publicationAuthor_displayName"/>
+        <entry key="publication.author.name" value-ref="publicationAuthor_displayName"/>
+        <entry key="publication.author.affiliation" value-ref="publicationAuthor_affiliation"/>
+        <entry key="publication.author.identifier" value-ref="publicationAuthor_identifier"/>
+        <entry key="publication.author.identifier.orcid" value-ref="publicationAuthor_identifierOrcid"/>
+        <entry key="publication.author.identifier.rid" value-ref="publicationAuthor_identifierRID"/>
+        <entry key="publication.author.identifier.scopus-author-id" value-ref="publicationAuthor_identifierScopusAuthorID"/>
+        <entry key="publication.author.identifier.ciencia-id" value-ref="publicationAuthor_identifierCienciaID"/>
+    <entry key="publication.author.identifier.gsid" value-ref="publicationAuthor_identifierGSID"/>
+    <entry key="publication.author.identifier.isni" value-ref="publicationAuthor_identifierISNI"/>
+        <entry key="publication.author.identifier.dai" value-ref="publicationAuthor_identifierDai"/>
+        <entry key="publication.author.identifier.research-gate-id" value-ref="publicationAuthor_identifierResearchGateId"/>
+        <entry key="publication.author.identifier.twitter-id" value-ref="publicationAuthor_identifierTwitterId"/>
+        <entry key="publication.author.identifier.facebook-id" value-ref="publicationAuthor_identifierFacebookId"/>
+        <entry key="publication.author.identifier.linkedin-id" value-ref="publicationAuthor_identifierLinkedinId"/>
+        <entry key="person.givenName" value-ref="publicationAuthor_givenName"/>
+        <entry key="person.familyName" value-ref="publicationAuthor_familyName"/>
+        <entry key="person.affiliation.name" value-ref="publicationAuthor_affiliation"/>
+        <entry key="person.identifier" value-ref="publicationAuthor_identifier"/>
+        <entry key="person.identifier.orcid" value-ref="publicationAuthor_identifierOrcid"/>
+        <entry key="person.identifier.rid" value-ref="publicationAuthor_identifierRID"/>
+        <entry key="person.identifier.scopus-author-id" value-ref="publicationAuthor_identifierScopusAuthorID"/>
+        <entry key="person.identifier.ciencia-id" value-ref="publicationAuthor_identifierCienciaID"/>
+    <entry key="person.identifier.gsid" value-ref="publicationAuthor_identifierGSID"/>
+    <entry key="person.identifier.isni" value-ref="publicationAuthor_identifierISNI"/>
+        <entry key="person.identifier.dai" value-ref="publicationAuthor_identifierDai"/>
+        <entry key="person.identifier.research-gate-id" value-ref="publicationAuthor_identifierResearchGateId"/>
+        <entry key="person.identifier.twitter-id" value-ref="publicationAuthor_identifierTwitterId"/>
+        <entry key="person.identifier.facebook-id" value-ref="publicationAuthor_identifierFacebookId"/>
+        <entry key="person.identifier.linkedin-id" value-ref="publicationAuthor_identifierLinkedinId"/>
+        <entry key="orgunit.name" value-ref="publicationAuthor_orgName"/>
+        <entry key="orgunit.identifier" value-ref="publicationAuthor_orgIdentifier"/>
+        <entry key="orgunit.identifier.ror" value-ref="publicationAuthor_orgIdentifierRor"/>
+        <entry key="orgunit.identifier.grid" value-ref="publicationAuthor_orgIdentifierGrid"/>
+        <entry key="orgunit.identifier.fundref" value-ref="publicationAuthor_orgIdentifierFundref"/>
+        <entry key="orgunit.identifier.isni" value-ref="publicationAuthor_orgIdentifierIsni"/>
+        <entry key="orgunit.identifier.vat" value-ref="publicationAuthor_orgIdentifierVat"/>
     </util:map>
     <!--
          If the related item has:
@@ -47,12 +86,12 @@
             person.givenName = John
          Then the original item will have, in this case:
             dc.contributor.author = Smith, John -->
-    <bean class="org.dspace.content.virtual.Concatenate" id="publicationAuthor_author">
+    <bean class="org.dspace.content.virtual.Concatenate" id="publicationAuthor_displayName">
         <property name="fields">
             <util:list>
                 <value>person.familyName</value>
                 <value>person.givenName</value>
-                <value>organization.legalName</value>
+                <value>orgunit.name</value>
             </util:list>
         </property>
         <property name="separator">
@@ -61,197 +100,363 @@
         <property name="useForPlace" value="true"/>
         <property name="populateWithNameVariant" value="true"/>
     </bean>
-
-    <!-- Config like this will tell our VirtualMetadataPopulator to include the virtual metadata field
-     'dc.contributor.other' on the appropriate item with the values defined in the value-ref.
-      This value-ref should be a bean of type VirtualMetadataConfiguration -->
-    <util:map id="isOrgUnitOfPublicationMap">
-        <entry key="dc.contributor.other" value-ref="publicationOrgUnit_name"/>
-    </util:map>
-    <bean class="org.dspace.content.virtual.Collected" id="publicationOrgUnit_name">
+    <bean class="org.dspace.content.virtual.Collected" id="publicationAuthor_givenName">
         <property name="fields">
             <util:list>
-                <value>organization.legalName</value>
-            </util:list>
-        </property>
-    </bean>
-
-    <util:map id="isPersonOfProjectMap">
-        <entry key="project.investigator" value-ref="projectPerson_author"/>
-    </util:map>
-    <!--
-     If the related item has:
-        person.familyName = Smith
-        person.givenName = John
-     Then the original item will have, in this case:
-        dc.contributor.author = Smith, John -->
-    <bean class="org.dspace.content.virtual.Concatenate" id="projectPerson_author">
-        <property name="fields">
-            <util:list>
-                <value>person.familyName</value>
                 <value>person.givenName</value>
             </util:list>
         </property>
-        <property name="separator">
-            <value>, </value>
-        </property>
     </bean>
-
-    <util:map id="isOrgUnitOfProjectMap">
-        <entry key="dc.contributor.other" value-ref="projectOrgUnit_other"/>
-    </util:map>
-    <!-- This Collected bean wil create a list of project.contributor.other virtual metadata fields that hold
-         the value of organization.legalName, each of them in a separate metadatavalue
-         If the related item has:
-            organization.legalName = Generic name
-            organization.legalName = Even more generic name
-         Then the original item will have, in this case:
-            project.contributor.other = Generic name
-            project.contributor.other = Even more generic name -->
-    <bean class="org.dspace.content.virtual.Collected" id="projectOrgUnit_other">
+    <bean class="org.dspace.content.virtual.Collected" id="publicationAuthor_familyName">
         <property name="fields">
             <util:list>
-                <value>organization.legalName</value>
+                <value>person.familyName</value>
+            </util:list>
+        </property>
+    </bean>
+    <bean class="org.dspace.content.virtual.Collected" id="publicationAuthor_affiliation">
+        <property name="fields">
+            <util:list>
+                <value>person.affiliation.name</value>
+            </util:list>
+        </property>
+    </bean>
+    <bean class="org.dspace.content.virtual.Collected" id="publicationAuthor_identifier">
+        <property name="fields">
+            <util:list>
+                <value>person.identifier</value>
+            </util:list>
+        </property>
+    </bean>
+    <bean class="org.dspace.content.virtual.Collected" id="publicationAuthor_identifierScopusAuthorID">
+        <property name="fields">
+            <util:list>
+                <value>person.identifier.scopus-author-id</value>
+            </util:list>
+        </property>
+    </bean>
+    <bean class="org.dspace.content.virtual.Collected" id="publicationAuthor_identifierRID">
+        <property name="fields">
+            <util:list>
+                <value>person.identifier.rid</value>
+            </util:list>
+        </property>
+    </bean>
+    <bean class="org.dspace.content.virtual.Collected" id="publicationAuthor_identifierCienciaID">
+        <property name="fields">
+            <util:list>
+                <value>person.identifier.ciencia-id</value>
+            </util:list>
+        </property>
+    </bean>
+    <bean class="org.dspace.content.virtual.Collected" id="publicationAuthor_identifierGSID">
+        <property name="fields">
+            <util:list>
+                <value>person.identifier.gsid</value>
+            </util:list>
+        </property>
+    </bean>
+    <bean class="org.dspace.content.virtual.Collected" id="publicationAuthor_identifierOrcid">
+        <property name="fields">
+            <util:list>
+                <value>person.identifier.orcid</value>
+            </util:list>
+        </property>
+    </bean>
+    <bean class="org.dspace.content.virtual.Collected" id="publicationAuthor_identifierISNI">
+        <property name="fields">
+            <util:list>
+                <value>person.identifier.isni</value>
+            </util:list>
+        </property>
+    </bean>
+    <bean class="org.dspace.content.virtual.Collected" id="publicationAuthor_orgName">
+        <property name="fields">
+            <util:list>
+                <value>orgunit.name</value>
+            </util:list>
+        </property>
+    </bean>
+    <bean class="org.dspace.content.virtual.Collected" id="publicationAuthor_orgIdentifier">
+        <property name="fields">
+            <util:list>
+                <value>orgunit.identifier</value>
+            </util:list>
+        </property>
+    </bean>
+    <bean class="org.dspace.content.virtual.Collected" id="publicationAuthor_orgIdentifierRor">
+        <property name="fields">
+            <util:list>
+                <value>orgunit.identifier.ror</value>
+            </util:list>
+        </property>
+    </bean>
+    <bean class="org.dspace.content.virtual.Collected" id="publicationAuthor_orgIdentifierGrid">
+        <property name="fields">
+            <util:list>
+                <value>orgunit.identifier.grid</value>
+            </util:list>
+        </property>
+    </bean>
+    <bean class="org.dspace.content.virtual.Collected" id="publicationAuthor_orgIdentifierFundref">
+        <property name="fields">
+            <util:list>
+                <value>orgunit.identifier.fundref</value>
+            </util:list>
+        </property>
+    </bean>
+    <bean class="org.dspace.content.virtual.Collected" id="publicationAuthor_orgIdentifierIsni">
+        <property name="fields">
+            <util:list>
+                <value>orgunit.identifier.isni</value>
+            </util:list>
+        </property>
+    </bean>
+    <bean class="org.dspace.content.virtual.Collected" id="publicationAuthor_orgIdentifierVat">
+        <property name="fields">
+            <util:list>
+                <value>orgunit.identifier.vat</value>
             </util:list>
         </property>
     </bean>
 
-    <util:map id="isOrgUnitOfPersonMap">
-        <entry key="person.contributor.other" value-ref="personProject_other"/>
-    </util:map>
-    <bean class="org.dspace.content.virtual.Collected" id="personProject_other">
+    <bean class="org.dspace.content.virtual.Collected" id="publicationAuthor_identifierDai">
         <property name="fields">
             <util:list>
-                <value>organization.legalName</value>
+                <value>person.identifier.dai</value>
+            </util:list>
+        </property>
+    </bean>
+    <bean class="org.dspace.content.virtual.Collected" id="publicationAuthor_identifierResearchGateId">
+        <property name="fields">
+            <util:list>
+                <value>person.identifier.research-gate-id</value>
+            </util:list>
+        </property>
+    </bean>
+    <bean class="org.dspace.content.virtual.Collected" id="publicationAuthor_identifierTwitterId">
+        <property name="fields">
+            <util:list>
+                <value>person.identifier.twitter-id</value>
+            </util:list>
+        </property>
+    </bean>
+    <bean class="org.dspace.content.virtual.Collected" id="publicationAuthor_identifierFacebookId">
+        <property name="fields">
+            <util:list>
+                <value>person.identifier.facebook-id</value>
+            </util:list>
+        </property>
+    </bean>
+    <bean class="org.dspace.content.virtual.Collected" id="publicationAuthor_identifierLinkedinId">
+        <property name="fields">
+            <util:list>
+                <value>person.identifier.linkedin-id</value>
             </util:list>
         </property>
     </bean>
 
-    <util:map id="isJournalVolumeOfIssueMap">
-        <entry key="publicationvolume.volumeNumber" value-ref="issueVolume_volume"/>
-        <entry key="creativeworkseries.issn" value-ref="volumeJournal_issn_related"/>
-        <entry key="journal.title" value-ref="volumeJournal_title_related"/>
+    <!-- Contributors populate dedicated metadata fields based on the contributor relationship -->
+    <util:map id="isPublicationContributorMap">
+        <entry key="dc.contributor.other" value-ref="publicationAuthor_displayName"/>
+        <entry key="publication.contributor.name" value-ref="publicationAuthor_displayName"/>
+        <entry key="publication.contributor.affiliation" value-ref="publicationAuthor_affiliation"/>
+        <entry key="publication.contributor.identifier" value-ref="publicationAuthor_identifier"/>
+        <entry key="publication.contributor.identifier.orcid" value-ref="publicationAuthor_identifierOrcid"/>
+        <entry key="publication.contributor.identifier.rid" value-ref="publicationAuthor_identifierRID"/>
+        <entry key="publication.contributor.identifier.scopus-author-id" value-ref="publicationAuthor_identifierScopusAuthorID"/>
+        <entry key="publication.contributor.identifier.ciencia-id" value-ref="publicationAuthor_identifierCienciaID"/>
+    <entry key="publication.contributor.identifier.gsid" value-ref="publicationAuthor_identifierGSID"/>
+    <entry key="publication.contributor.identifier.isni" value-ref="publicationAuthor_identifierISNI"/>
+        <entry key="publication.contributor.identifier.dai" value-ref="publicationAuthor_identifierDai"/>
+        <entry key="publication.contributor.identifier.research-gate-id" value-ref="publicationAuthor_identifierResearchGateId"/>
+        <entry key="publication.contributor.identifier.twitter-id" value-ref="publicationAuthor_identifierTwitterId"/>
+        <entry key="publication.contributor.identifier.facebook-id" value-ref="publicationAuthor_identifierFacebookId"/>
+        <entry key="publication.contributor.identifier.linkedin-id" value-ref="publicationAuthor_identifierLinkedinId"/>
+        <entry key="orgunit.name" value-ref="publicationAuthor_orgName"/>
+        <entry key="orgunit.identifier" value-ref="publicationAuthor_orgIdentifier"/>
+        <entry key="orgunit.identifier.ror" value-ref="publicationAuthor_orgIdentifierRor"/>
+        <entry key="orgunit.identifier.grid" value-ref="publicationAuthor_orgIdentifierGrid"/>
+        <entry key="orgunit.identifier.fundref" value-ref="publicationAuthor_orgIdentifierFundref"/>
+        <entry key="orgunit.identifier.isni" value-ref="publicationAuthor_orgIdentifierIsni"/>
+        <entry key="orgunit.identifier.vat" value-ref="publicationAuthor_orgIdentifierVat"/>
     </util:map>
-    <!-- This Collected bean will create a list of publicationVolume.volumeNumber virtual metadata fields that hold
-     the value of publicationVolume.volumeNumber, each of them in a separate metadatavalue
-     If the related item has:
-        publicationVolume.volumeNumber = Generic volume
-        publicationVolume.volumeNumber = Even more generic volume
-     Then the original item will have, in this case:
-        publicationVolume.volumeNumber = Generic volume
-        publicationVolume.volumeNumber = Even more generic volume
-     Note that these metadata fields have the same signature of schema, element and qualifier, but that poses no problem
-     -->
-    <bean class="org.dspace.content.virtual.Collected" id="issueVolume_volume">
+
+    <!-- Editors reuse author metadata beans to expose editor-specific fields -->
+    <util:map id="isPublicationEditorMap">
+        <entry key="dc.contributor.editor" value-ref="publicationAuthor_displayName"/>
+        <entry key="publication.editor.name" value-ref="publicationAuthor_displayName"/>
+        <entry key="publication.editor.affiliation" value-ref="publicationAuthor_affiliation"/>
+        <entry key="publication.editor.identifier" value-ref="publicationAuthor_identifier"/>
+        <entry key="publication.editor.identifier.orcid" value-ref="publicationAuthor_identifierOrcid"/>
+        <entry key="publication.editor.identifier.rid" value-ref="publicationAuthor_identifierRID"/>
+        <entry key="publication.editor.identifier.scopus-author-id" value-ref="publicationAuthor_identifierScopusAuthorID"/>
+        <entry key="publication.editor.identifier.ciencia-id" value-ref="publicationAuthor_identifierCienciaID"/>
+    <entry key="publication.editor.identifier.gsid" value-ref="publicationAuthor_identifierGSID"/>
+    <entry key="publication.editor.identifier.isni" value-ref="publicationAuthor_identifierISNI"/>
+        <entry key="publication.editor.identifier.dai" value-ref="publicationAuthor_identifierDai"/>
+        <entry key="publication.editor.identifier.research-gate-id" value-ref="publicationAuthor_identifierResearchGateId"/>
+        <entry key="publication.editor.identifier.twitter-id" value-ref="publicationAuthor_identifierTwitterId"/>
+        <entry key="publication.editor.identifier.facebook-id" value-ref="publicationAuthor_identifierFacebookId"/>
+        <entry key="publication.editor.identifier.linkedin-id" value-ref="publicationAuthor_identifierLinkedinId"/>
+    </util:map>
+
+    <!-- Publishers primarily expose organization metadata -->
+    <util:map id="isPublicationPublisherMap">
+        <entry key="dc.publisher" value-ref="publicationPublisher_name"/>
+        <entry key="publication.publisher.name" value-ref="publicationPublisher_name"/>
+        <entry key="publication.publisher.identifier" value-ref="publicationPublisher_identifier"/>
+        <entry key="publication.publisher.identifier.ror" value-ref="publicationAuthor_orgIdentifierRor"/>
+        <entry key="publication.publisher.identifier.grid" value-ref="publicationAuthor_orgIdentifierGrid"/>
+        <entry key="publication.publisher.identifier.fundref" value-ref="publicationAuthor_orgIdentifierFundref"/>
+        <entry key="publication.publisher.identifier.isni" value-ref="publicationAuthor_orgIdentifierIsni"/>
+        <entry key="publication.publisher.identifier.vat" value-ref="publicationAuthor_orgIdentifierVat"/>
+        <entry key="orgunit.name" value-ref="publicationPublisher_name"/>
+        <entry key="orgunit.identifier" value-ref="publicationPublisher_identifier"/>
+        <entry key="orgunit.identifier.ror" value-ref="publicationAuthor_orgIdentifierRor"/>
+        <entry key="orgunit.identifier.grid" value-ref="publicationAuthor_orgIdentifierGrid"/>
+        <entry key="orgunit.identifier.fundref" value-ref="publicationAuthor_orgIdentifierFundref"/>
+        <entry key="orgunit.identifier.isni" value-ref="publicationAuthor_orgIdentifierIsni"/>
+        <entry key="orgunit.identifier.vat" value-ref="publicationAuthor_orgIdentifierVat"/>
+    </util:map>
+
+    <bean class="org.dspace.content.virtual.Collected" id="publicationPublisher_name">
         <property name="fields">
             <util:list>
-                <value>publicationvolume.volumeNumber</value>
+                <value>orgunit.name</value>
             </util:list>
         </property>
     </bean>
-    <!--    This Related bean defines a relationship type that will be used on a journal issue.
-            The journal issue will receive 2 metadata fields if we look at the map 'isJournalVolumeOfIssueMap' it'll
-            receive the publicationVolume.volumeNumber metadata field and the creativeworkseries.issn metadata field.
-         Since the creativeworkseries.issn metadata field can't be filled in through the metadata of the journalvolume
-         alone, we need to pass this call higher up the chain to the journalvolume's relationships to find the journal.
-         Therefore we've created this Related bean which will look at the journalvolume's relationships with type
-         'isJournalOfVolume' to find the journal that this journalvolume is related to and it'll then call the next
-         VirtualMetadataConfiguration with that journal to retrieve the value. This will leave the retrieving
-         of the values to the next bean in the chain -->
-    <bean class="org.dspace.content.virtual.Related" id="volumeJournal_issn_related">
-        <property name="relationshipTypeString" value="isJournalOfVolume"/>
-        <property name="virtualMetadataConfiguration" ref="volumeJournal_issn"/>
-    </bean>
-
-    <bean class="org.dspace.content.virtual.Related" id="volumeJournal_title_related">
-        <property name="relationshipTypeString" value="isJournalOfVolume"/>
-        <property name="virtualMetadataConfiguration" ref="volumeJournal_title"/>
-    </bean>
-
-    <util:map id="isJournalOfVolumeMap">
-        <entry key="creativeworkseries.issn" value-ref="volumeJournal_issn"/>
-        <entry key="journal.title" value-ref="volumeJournal_title"/>
-    </util:map>
-    <bean class="org.dspace.content.virtual.Collected" id="volumeJournal_issn">
+    <bean class="org.dspace.content.virtual.Collected" id="publicationPublisher_identifier">
         <property name="fields">
             <util:list>
-                <value>creativeworkseries.issn</value>
-            </util:list>
-        </property>
-    </bean>
-    <bean class="org.dspace.content.virtual.Collected" id="volumeJournal_title">
-        <property name="fields">
-            <util:list>
-                <value>dc.title</value>
+                <value>orgunit.identifier</value>
             </util:list>
         </property>
     </bean>
 
-    <util:map id="isVolumeOfJournalMap">
+    
+    <!-- Config like this will tell our VirtualMetadataPopulator to include the virtual metadata fields
+     'dc.relation', 'oaire' funding related, and 'project.funder' and some other related with the appropriate
+     item with the values defined in the value-ref.
+      This value-ref should be a bean of type VirtualMetadataConfiguration -->
+    <util:map id="isProjectOfPublicationMap">
+        <entry key="dc.relation" value-ref="publicationProject_title"/>
+        <entry key="publication.project" value-ref="publicationProject_title"/>
+        <entry key="publication.funding" value-ref="publicationProject_fundingStream"/>
+        <entry key="publication.funding.awardNumber" value-ref="publicationProject_awardNumber"/>
+        <entry key="publication.funding.awardURI" value-ref="publicationProject_awardURI"/>
+        <entry key="project.title" value-ref="publicationProject_title"/>
+        <entry key="project.acronym" value-ref="publicationProject_acronym"/>
+        <entry key="project.identifier" value-ref="publicationProject_identifier"/>
+        <entry key="project.identifier.project-reference" value-ref="publicationProject_projectReference"/>
+        <entry key="project.identifier.url" value-ref="publicationProject_identifierUrl"/>
+        <entry key="project.funder.name" value-ref="publicationProject_projectFunderName_related"/>
+        <entry key="project.funder.identifier" value-ref="publicationProject_projectFunderId_related"/>
+        <entry key="project.funder.identifier.ror" value-ref="publicationProject_projectFunderRor_related"/>
     </util:map>
-
-    <util:map id="isIssueOfJournalVolumeMap">
-        <entry key="publicationissue.issueNumber" value-ref="journalIssue_number"/>
-    </util:map>
-    <bean class="org.dspace.content.virtual.Collected" id="journalIssue_number">
+    <bean class="org.dspace.content.virtual.Collected" id="publicationProject_title">
         <property name="fields">
             <util:list>
-                <value>publicationissue.issueNumber</value>
+                <value>project.title</value>
+            </util:list>
+        </property>
+    </bean>
+    <bean class="org.dspace.content.virtual.Collected" id="publicationProject_fundingStream">
+        <property name="fields">
+            <util:list>
+                <value>oaire.fundingStream</value>
+            </util:list>
+        </property>
+    </bean>
+    <bean class="org.dspace.content.virtual.Collected" id="publicationProject_awardNumber">
+        <property name="fields">
+            <util:list>
+                <value>oaire.awardNumber</value>
+            </util:list>
+        </property>
+    </bean>
+    <bean class="org.dspace.content.virtual.Collected" id="publicationProject_awardURI">
+        <property name="fields">
+            <util:list>
+                <value>oaire.awardURI</value>
+            </util:list>
+        </property>
+    </bean>
+    <bean class="org.dspace.content.virtual.Collected" id="publicationProject_acronym">
+        <property name="fields">
+            <util:list>
+                <value>project.acronym</value>
+            </util:list>
+        </property>
+    </bean>
+    <bean class="org.dspace.content.virtual.Collected" id="publicationProject_identifier">
+        <property name="fields">
+            <util:list>
+                <value>project.identifier</value>
+            </util:list>
+        </property>
+    </bean>
+    <bean class="org.dspace.content.virtual.Collected" id="publicationProject_projectReference">
+        <property name="fields">
+            <util:list>
+                <value>project.identifier.project-reference</value>
+            </util:list>
+        </property>
+    </bean>
+    <bean class="org.dspace.content.virtual.Collected" id="publicationProject_identifierUrl">
+        <property name="fields">
+            <util:list>
+                <value>project.identifier.url</value>
             </util:list>
         </property>
     </bean>
 
-    <util:map id="isJournalIssueOfPublicationMap">
-        <entry key="creativeworkseries.issn"  value-ref="issueVolumeJournal_issn_related"/>
-        <entry key="journal.title"  value-ref="issueVolumeJournal_title_related"/>
-        <entry key="journalvolume.identifier.name" value-ref="issueVolume_title_related"/>
-        <entry key="relation.isJournalOfPublication" value-ref="issueVolumeJournal_uuid_related"/>
-    </util:map>
-    <bean class="org.dspace.content.virtual.Concatenate" id="issueVolume_title">
+    <!-- This Related bean defines a relationship type that will be used on a publication (from a project).
+         -->
+    <bean class="org.dspace.content.virtual.Related" id="publicationProject_projectFunderName_related">
+        <property name="relationshipTypeString" value="isFundingAgencyOfProject"/>
+        <property name="virtualMetadataConfiguration" ref="projectOrgUnit_orgName"/>
+    </bean>
+
+    <bean class="org.dspace.content.virtual.Related" id="publicationProject_projectFunderId_related">
+        <property name="relationshipTypeString" value="isFundingAgencyOfProject"/>
+        <property name="virtualMetadataConfiguration" ref="projectOrgUnit_orgId"/>
+    </bean>
+
+    <bean class="org.dspace.content.virtual.Related" id="publicationProject_projectFunderRor_related">
+        <property name="relationshipTypeString" value="isFundingAgencyOfProject"/>
+        <property name="virtualMetadataConfiguration" ref="projectOrgUnit_rorId"/>
+    </bean>
+
+    <!-- Config like this will tell our VirtualMetadataPopulator to include the virtual metadata field
+     'project.funder.*' on the appropriate item with the values defined in the value-ref.
+      This value-ref should be a bean of type VirtualMetadataConfiguration -->
+    <util:map id="isFundingAgencyOfProjectMap">
+        <entry key="project.funder.name" value-ref="projectOrgUnit_orgName"/>
+        <entry key="project.funder.identifier" value-ref="projectOrgUnit_orgId"/>
+        <entry key="project.funder.identifier.ror" value-ref="projectOrgUnit_rorId"/>
+    </util:map> 
+
+    <bean class="org.dspace.content.virtual.Collected" id="projectOrgUnit_orgName">
         <property name="fields">
             <util:list>
-                <value>dc.title</value>
+                <value>orgunit.name</value>
             </util:list>
         </property>
-        <property name="separator">
-            <value>, </value>
+    </bean>
+    <bean class="org.dspace.content.virtual.Collected" id="projectOrgUnit_orgId">
+        <property name="fields">
+            <util:list>
+                <value>orgunit.identifier</value>
+            </util:list>
         </property>
     </bean>
-
-    <!-- This Related bean defines a relationship type that will be used on a publication.
-        The publication will receive 1 virtual metadata value namely the creativeworkseries.issn to which it belongs
-     Since the creativeworkseries.issn metadata field can't be filled in through the metadata of the journalIssue
-     alone, we need to pass this call higher up the chain to the journalissue's relationships to find the journal.
-     Therefore we've created this Related bean which will look at the journalissue's relationships with type
-     'isJournalVolumeOfIssue' to find the journalvolume that this journalissue is related to and it'll then call the next
-     VirtualMetadataConfiguration with that journalvolume to retrieve the value. This will leave the retrieving
-     of the values to the next bean in the chain.
-     In this specific case, it'll call another Related bean to retrieve the journal for the journalvolume and it'll
-     then retrieve the volume. This example has 2 Related beans chained to eachother to finally chain to a Collected
-     bean to retrieve the final value -->
-    <bean class="org.dspace.content.virtual.Related" id="issueVolumeJournal_issn_related">
-        <property name="relationshipTypeString" value="isJournalVolumeOfIssue"/>
-        <property name="virtualMetadataConfiguration" ref="volumeJournal_issn_related"/>
+    <bean class="org.dspace.content.virtual.Collected" id="projectOrgUnit_rorId">
+        <property name="fields">
+            <util:list>
+                <value>orgunit.identifier.ror</value>
+            </util:list>
+        </property>
     </bean>
-
-    <bean class="org.dspace.content.virtual.Related" id="issueVolumeJournal_title_related">
-        <property name="relationshipTypeString" value="isJournalVolumeOfIssue"/>
-        <property name="virtualMetadataConfiguration" ref="volumeJournal_title_related"/>
-    </bean>
-
-    <bean class="org.dspace.content.virtual.Related" id="issueVolume_title_related">
-        <property name="relationshipTypeString" value="isJournalVolumeOfIssue"/>
-        <property name="virtualMetadataConfiguration" ref="issueVolume_title"/>
-    </bean>
-
-    <bean class="org.dspace.content.virtual.Related" id="issueVolumeJournal_uuid_related">
-        <property name="relationshipTypeString" value="isJournalVolumeOfIssue"/>
-        <property name="virtualMetadataConfiguration" ref="volumeJournal_uuid_related"/>
-    </bean>
-
-    <bean class="org.dspace.content.virtual.Related" id="volumeJournal_uuid_related">
-        <property name="relationshipTypeString" value="isJournalOfVolume"/>
-        <property name="virtualMetadataConfiguration" ref="volumeJournal_uuid"/>
-    </bean>
-    <bean class="org.dspace.content.virtual.UUIDValue" id="volumeJournal_uuid"/>
 </beans>

@@ -298,20 +298,6 @@
 		</rightCardinality>
 	</type>
 
-	<!-- The relation between a Product and a Publication that references it -->
-	<type>
-		<leftType>Product</leftType>
-		<rightType>Publication</rightType>
-		<leftwardType>isPublicationOfProduct</leftwardType>
-		<rightwardType>isProductOfPublication</rightwardType>
-		<leftCardinality>
-			<min>0</min>
-		</leftCardinality>
-		<rightCardinality>
-			<min>0</min>
-		</rightCardinality>
-	</type>
-
 	<!-- The relation between a Product and a Funding scheme -->
 	<type>
 		<leftType>Product</leftType>
@@ -430,34 +416,6 @@
 		</rightCardinality>
 	</type>
 
-	<!-- The relation between a Project and a Publication -->
-	<type>
-		<leftType>Project</leftType>
-		<rightType>Publication</rightType>
-		<leftwardType>isPublicationOfProject</leftwardType>
-		<rightwardType>isProjectOfPublication</rightwardType>
-		<leftCardinality>
-			<min>0</min>
-		</leftCardinality>
-		<rightCardinality>
-			<min>0</min>
-		</rightCardinality>
-	</type>
-
-	<!-- The relation between a Project and a Product -->
-	<type>
-		<leftType>Project</leftType>
-		<rightType>Product</rightType>
-		<leftwardType>isProductOfProject</leftwardType>
-		<rightwardType>isProjectOfProduct</rightwardType>
-		<leftCardinality>
-			<min>0</min>
-		</leftCardinality>
-		<rightCardinality>
-			<min>0</min>
-		</rightCardinality>
-	</type>
-
 	<!-- ========================================
 	     PERSON RELATIONSHIPS
 	     ======================================== -->
@@ -468,90 +426,6 @@
 		<rightType>OrgUnit</rightType>
 		<leftwardType>isAffiliationOfPerson</leftwardType>
 		<rightwardType>isPersonOfAffiliation</rightwardType>
-		<leftCardinality>
-			<min>0</min>
-		</leftCardinality>
-		<rightCardinality>
-			<min>0</min>
-		</rightCardinality>
-	</type>
-
-	<!-- The relation between a Person and a Publication as author -->
-	<type>
-		<leftType>Person</leftType>
-		<rightType>Publication</rightType>
-		<leftwardType>isPublicationOfAuthor</leftwardType>
-		<rightwardType>isAuthorOfPublication</rightwardType>
-		<leftCardinality>
-			<min>0</min>
-		</leftCardinality>
-		<rightCardinality>
-			<min>0</min>
-		</rightCardinality>
-	</type>
-
-	<!-- The relation between a Person and a Publication as editor -->
-	<type>
-		<leftType>Person</leftType>
-		<rightType>Publication</rightType>
-		<leftwardType>isPublicationOfEditor</leftwardType>
-		<rightwardType>isEditorOfPublication</rightwardType>
-		<leftCardinality>
-			<min>0</min>
-		</leftCardinality>
-		<rightCardinality>
-			<min>0</min>
-		</rightCardinality>
-	</type>
-
-	<!-- The relation between a Person and a Publication as contributor -->
-	<type>
-		<leftType>Person</leftType>
-		<rightType>Publication</rightType>
-		<leftwardType>isPublicationOfContributor</leftwardType>
-		<rightwardType>isContributorOfPublication</rightwardType>
-		<leftCardinality>
-			<min>0</min>
-		</leftCardinality>
-		<rightCardinality>
-			<min>0</min>
-		</rightCardinality>
-	</type>
-
-	<!-- The relation between a Person and a Product as creator -->
-	<type>
-		<leftType>Person</leftType>
-		<rightType>Product</rightType>
-		<leftwardType>isProductOfCreator</leftwardType>
-		<rightwardType>isCreatorOfProduct</rightwardType>
-		<leftCardinality>
-			<min>0</min>
-		</leftCardinality>
-		<rightCardinality>
-			<min>0</min>
-		</rightCardinality>
-	</type>
-
-	<!-- The relation between a Person and a Product as contributor -->
-	<type>
-		<leftType>Person</leftType>
-		<rightType>Product</rightType>
-		<leftwardType>isProductOfContributor</leftwardType>
-		<rightwardType>isContributorOfProduct</rightwardType>
-		<leftCardinality>
-			<min>0</min>
-		</leftCardinality>
-		<rightCardinality>
-			<min>0</min>
-		</rightCardinality>
-	</type>
-
-	<!-- The relation between a Person and a Project -->
-	<type>
-		<leftType>Person</leftType>
-		<rightType>Project</rightType>
-		<leftwardType>isProjectOfResearcher</leftwardType>
-		<rightwardType>isResearcherOfProject</rightwardType>
 		<leftCardinality>
 			<min>0</min>
 		</leftCardinality>
@@ -592,91 +466,6 @@
 			<min>0</min>
 		</rightCardinality>
 	</type>
-
-	<!-- The relation between an Organization and a Person -->
-	<type>
-		<leftType>OrgUnit</leftType>
-		<rightType>Person</rightType>
-		<leftwardType>isPersonOfAffiliation</leftwardType>
-		<rightwardType>isAffiliationOfPerson</rightwardType>
-		<leftCardinality>
-			<min>0</min>
-		</leftCardinality>
-		<rightCardinality>
-			<min>0</min>
-		</rightCardinality>
-	</type>
-
-	<!-- The relation between an Organization and a Project as funder -->
-	<type>
-		<leftType>OrgUnit</leftType>
-		<rightType>Project</rightType>
-		<leftwardType>isProjectOfFundingAgency</leftwardType>
-		<rightwardType>isFundingAgencyOfProject</rightwardType>
-		<leftCardinality>
-			<min>0</min>
-		</leftCardinality>
-		<rightCardinality>
-			<min>0</min>
-		</rightCardinality>
-	</type>
-
-	<!-- The relation between an Organization and a Project as coordinator -->
-	<type>
-		<leftType>OrgUnit</leftType>
-		<rightType>Project</rightType>
-		<leftwardType>isProjectOfCoordinator</leftwardType>
-		<rightwardType>isCoordinatorOfProject</rightwardType>
-		<leftCardinality>
-			<min>0</min>
-		</leftCardinality>
-		<rightCardinality>
-			<min>0</min>
-		</rightCardinality>
-	</type>
-
-	<!-- The relation between an Organization and a Project as partner -->
-	<type>
-		<leftType>OrgUnit</leftType>
-		<rightType>Project</rightType>
-		<leftwardType>isProjectOfPartner</leftwardType>
-		<rightwardType>isPartnerOfProject</rightwardType>
-		<leftCardinality>
-			<min>0</min>
-		</leftCardinality>
-		<rightCardinality>
-			<min>0</min>
-		</rightCardinality>
-	</type>
-
-	<!-- The relation between an Organization and a Publication as publisher -->
-	<type>
-		<leftType>OrgUnit</leftType>
-		<rightType>Publication</rightType>
-		<leftwardType>isPublicationOfPublisher</leftwardType>
-		<rightwardType>isPublisherOfPublication</rightwardType>
-		<leftCardinality>
-			<min>0</min>
-		</leftCardinality>
-		<rightCardinality>
-			<min>0</min>
-		</rightCardinality>
-	</type>
-
-	<!-- The relation between an Organization and a Product as host -->
-	<type>
-		<leftType>OrgUnit</leftType>
-		<rightType>Product</rightType>
-		<leftwardType>isHostingProduct</leftwardType>
-		<rightwardType>isHostedByOrgUnit</rightwardType>
-		<leftCardinality>
-			<min>0</min>
-		</leftCardinality>
-		<rightCardinality>
-			<min>0</min>
-		</rightCardinality>
-	</type>
-
 	<!-- The relation between an Organization and a Funding scheme -->
 	<type>
 		<leftType>OrgUnit</leftType>
@@ -724,125 +513,13 @@
 		</rightCardinality>
 	</type>
 
-	<!-- The relation between a Funding and an Organization as funder -->
-	<type>
-		<leftType>Funding</leftType>
-		<rightType>OrgUnit</rightType>
-		<leftwardType>isOrgUnitOfFunding</leftwardType>
-		<rightwardType>isFundingOfOrgUnit</rightwardType>
-		<leftCardinality>
-			<min>0</min>
-		</leftCardinality>
-		<rightCardinality>
-			<min>0</min>
-		</rightCardinality>
-	</type>
-
-	<!-- The relation between a Funding and a Project -->
-	<type>
-		<leftType>Funding</leftType>
-		<rightType>Project</rightType>
-		<leftwardType>isProjectOfFunding</leftwardType>
-		<rightwardType>isFundingOfProject</rightwardType>
-		<leftCardinality>
-			<min>0</min>
-		</leftCardinality>
-		<rightCardinality>
-			<min>0</min>
-		</rightCardinality>
-	</type>
-
-	<!-- The relation between a Funding and a Publication -->
-	<type>
-		<leftType>Funding</leftType>
-		<rightType>Publication</rightType>
-		<leftwardType>isPublicationOfFunding</leftwardType>
-		<rightwardType>isFundingOfPublication</rightwardType>
-		<leftCardinality>
-			<min>0</min>
-		</leftCardinality>
-		<rightCardinality>
-			<min>0</min>
-		</rightCardinality>
-	</type>
-
-	<!-- The relation between a Funding and a Product -->
-	<type>
-		<leftType>Funding</leftType>
-		<rightType>Product</rightType>
-		<leftwardType>isProductOfFunding</leftwardType>
-		<rightwardType>isFundingOfProduct</rightwardType>
-		<leftCardinality>
-			<min>0</min>
-		</leftCardinality>
-		<rightCardinality>
-			<min>0</min>
-		</rightCardinality>
-	</type>
-
 	<!-- ========================================
 	     EQUIPMENT RELATIONSHIPS
 	     ======================================== -->
 
-	<!-- The relation between Equipment and a Project -->
-	<type>
-		<leftType>Equipment</leftType>
-		<rightType>Project</rightType>
-		<leftwardType>isProjectOfEquipment</leftwardType>
-		<rightwardType>isEquipmentOfProject</rightwardType>
-		<leftCardinality>
-			<min>0</min>
-		</leftCardinality>
-		<rightCardinality>
-			<min>0</min>
-		</rightCardinality>
-	</type>
-
-	<!-- The relation between Equipment and a Product -->
-	<type>
-		<leftType>Equipment</leftType>
-		<rightType>Product</rightType>
-		<leftwardType>isProductOfEquipment</leftwardType>
-		<rightwardType>isEquipmentOfProduct</rightwardType>
-		<leftCardinality>
-			<min>0</min>
-		</leftCardinality>
-		<rightCardinality>
-			<min>0</min>
-		</rightCardinality>
-	</type>
-
-	<!-- The relation between Equipment and an Organization (operator) -->
-	<type>
-		<leftType>Equipment</leftType>
-		<rightType>OrgUnit</rightType>
-		<leftwardType>isOrgUnitOfEquipment</leftwardType>
-		<rightwardType>isEquipmentOfOrgUnit</rightwardType>
-		<leftCardinality>
-			<min>0</min>
-		</leftCardinality>
-		<rightCardinality>
-			<min>0</min>
-		</rightCardinality>
-	</type>
-
 	<!-- ========================================
 	     EVENT RELATIONSHIPS
 	     ======================================== -->
-
-	<!-- The relation between an Event and a Publication -->
-	<type>
-		<leftType>Event</leftType>
-		<rightType>Publication</rightType>
-		<leftwardType>isPublicationOfEvent</leftwardType>
-		<rightwardType>isEventOfPublication</rightwardType>
-		<leftCardinality>
-			<min>0</min>
-		</leftCardinality>
-		<rightCardinality>
-			<min>0</min>
-		</rightCardinality>
-	</type>
 
 	<!-- The relation between an Event and an Organization (organizer, sponsor) -->
 	<type>

@@ -102,6 +102,27 @@
         <scope_note>The organization that funds the project.</scope_note>
     </dc-type>
 
+    <dc-type>
+        <schema>project</schema>
+        <element>funder</element>
+        <qualifier>name</qualifier>
+        <scope_note>The name of the funding organization.</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>project</schema>
+        <element>funder</element>
+        <qualifier>identifier</qualifier>
+        <scope_note>An external identifier for the funding organization.</scope_note>
+    </dc-type>
+
+    <dc-type>
+        <schema>project</schema>
+        <element>funder</element>
+        <qualifier>identifier.ror</qualifier>
+        <scope_note>Research Organization Registry identifier for the funding organization.</scope_note>
+    </dc-type>
+
     <!-- OpenAIRE CERIF: Project/Funded/As -->
     <dc-type>
         <schema>project</schema>

@@ -799,26 +799,32 @@
         <form name="openairePublicationPageoneForm">
             <row>
                 <field>
-                    <dc-schema>dc</dc-schema>
+                    <dc-schema>publication</dc-schema>
                     <dc-element>title</dc-element>
-                    <dc-qualifier></dc-qualifier>
-                    <repeatable>false</repeatable>
                     <label>Title</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the main title of the item.</hint>
-                    <required>You must enter a main title for this item.</required>
+                    <hint>Enter the main title of the publication.</hint>
+                    <required>You must enter a main title for this publication.</required>
                 </field>
             </row>
             <row>
                 <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>title</dc-element>
-                    <dc-qualifier>alternative</dc-qualifier>
+                    <dc-schema>publication</dc-schema>
+                    <dc-element>subtitle</dc-element>
                     <repeatable>true</repeatable>
-                    <label>Other Titles</label>
+                    <label>Subtitle</label>
                     <input-type>onebox</input-type>
-                    <hint>If the item has any alternative titles, please enter them here.</hint>
-                    <required></required>
+                    <hint>Add any subtitle associated with the publication.</hint>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>publication</dc-schema>
+                    <dc-element>nameAbbreviation</dc-element>
+                    <repeatable>true</repeatable>
+                    <label>Abbreviated Title</label>
+                    <input-type>onebox</input-type>
+                    <hint>Provide abbreviations or short titles used for this publication.</hint>
                 </field>
             </row>
             <row>
@@ -828,220 +834,186 @@
                     <repeatable>true</repeatable>
                     <name-variants>true</name-variants>
                     <label>Author</label>
-                    <hint>Add an author</hint>
+                    <hint>Link an author entity or type a free-text author name.</hint>
                     <linked-metadata-field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>contributor</dc-element>
-                        <dc-qualifier>author</dc-qualifier>
+                        <dc-schema>publication</dc-schema>
+                        <dc-element>author</dc-element>
+                        <dc-qualifier>name</dc-qualifier>
                         <input-type>name</input-type>
                     </linked-metadata-field>
                     <externalsources>orcid</externalsources>
-                    <required>At least one author (plain text or relationship) is required</required>
+                    <required>At least one author (relationship or text) is required.</required>
                 </relation-field>
             </row>
-
-            <!-- EDITOR and Other contributors - Add new field here -->
-
             <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>date</dc-element>
-                    <dc-qualifier>issued</dc-qualifier>
-                    <repeatable>false</repeatable>
-                    <label>Date of Issue</label>
-                    <style>col-sm-4</style>
-                    <input-type>date</input-type>
-                    <hint>Please give the date of previous publication or public distribution.
-                        You can leave out the day
-                        and/or month if they aren't applicable.
-                    </hint>
-                    <required>You must enter at least the year.</required>
-                </field>
+                <relation-field>
+                    <relationship-type>isEditorOfPublication</relationship-type>
+                    <search-configuration>personOrOrgunit</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Editor</label>
+                    <hint>Link an editor or record the editor name.</hint>
+                    <linked-metadata-field>
+                        <dc-schema>publication</dc-schema>
+                        <dc-element>editor</dc-element>
+                        <dc-qualifier>name</dc-qualifier>
+                        <input-type>name</input-type>
+                    </linked-metadata-field>
+                </relation-field>
             </row>
             <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>publisher</dc-element>
-                    <dc-qualifier></dc-qualifier>
-                    <repeatable>false</repeatable>
+                <relation-field>
+                    <relationship-type>isContributorOfPublication</relationship-type>
+                    <search-configuration>personOrOrgunit</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Contributor</label>
+                    <hint>Link other contributors such as translators or illustrators.</hint>
+                    <linked-metadata-field>
+                        <dc-schema>publication</dc-schema>
+                        <dc-element>contributor</dc-element>
+                        <dc-qualifier>name</dc-qualifier>
+                        <input-type>name</input-type>
+                    </linked-metadata-field>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isPublisherOfPublication</relationship-type>
+                    <search-configuration>orgunit</search-configuration>
+                    <repeatable>true</repeatable>
                     <label>Publisher</label>
-                    <style>col-sm-8</style>
-                    <input-type>onebox</input-type>
-                    <hint>Enter the name of the publisher of the previously issued instance of this item.</hint>
-                    <required></required>
-                </field>
+                    <hint>Link the publishing organisation or add a free-text publisher name.</hint>
+                    <linked-metadata-field>
+                        <dc-schema>publication</dc-schema>
+                        <dc-element>publisher</dc-element>
+                        <dc-qualifier>name</dc-qualifier>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                    <externalsources>ror</externalsources>
+                </relation-field>
             </row>
             <row>
                 <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>relation</dc-element>
-                    <dc-qualifier>hasversion</dc-qualifier>
-                    <repeatable>false</repeatable>
-                    <label>Editor Version</label>
-                    <input-type>onebox</input-type>
-                    <hint>Enter the URL/DOI of the editor version of this item.</hint>
-                    <required></required>
-                </field>
-            </row>
-            <row>
-                <field>
-                    <dc-schema>dcterms</dc-schema>
-                    <dc-element>references</dc-element>
-                    <dc-qualifier></dc-qualifier>
-                    <repeatable>false</repeatable>
-                    <label>Related Dataset</label>
-                    <input-type>onebox</input-type>
-                    <hint>Enter the URL/DOI of the related Dataset.</hint>
-                    <required></required>
-                </field>
-            </row>
-            <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>identifier</dc-element>
-                    <dc-qualifier></dc-qualifier>
-                    <!-- An input-type of qualdrop_value MUST be marked as repeatable -->
-                    <repeatable>true</repeatable>
-                    <label>Identifiers</label>
-                    <input-type value-pairs-name="common_identifiers">qualdrop_value</input-type>
-                    <hint>If the item has any identification numbers or codes associated with
-                        it, please enter the types
-                        and the actual numbers or codes.
-                    </hint>
-                    <required></required>
-                </field>
-            </row>
-            <row>
-                <field>
-                    <dc-schema>oaire</dc-schema>
-                    <dc-element>citation</dc-element>
-                    <dc-qualifier>title</dc-qualifier>
-                    <repeatable>false</repeatable>
-                    <label>Title of Journal, Book or Event</label>
-                    <input-type>onebox</input-type>
-                    <hint>Include the name of related item like the journal name, book title or event name.</hint>
-                    <required></required>
-                </field>
-            </row>
-            <row>
-                <field>
-                    <dc-schema>oaire</dc-schema>
-                    <dc-element>citation</dc-element>
-                    <dc-qualifier>conferencePlace</dc-qualifier>
-                    <repeatable>false</repeatable>
-                    <label>Event/Conference Place</label>
-                    <input-type>onebox</input-type>
-                    <hint>Enter the event location.</hint>
-                    <required></required>
-                </field>
-            </row>
-            <row>
-                <field>
-                    <dc-schema>oaire</dc-schema>
-                    <dc-element>citation</dc-element>
-                    <dc-qualifier>conferenceDate</dc-qualifier>
-                    <repeatable>false</repeatable>
-                    <label>Conference Date</label>
+                    <dc-schema>publication</dc-schema>
+                    <dc-element>publicationDate</dc-element>
+                    <label>Publication Date</label>
                     <input-type>date</input-type>
-                    <hint>Enter the date of the event.</hint>
-                    <required></required>
-                </field>
-            </row>
-            <row>
-                <field>
-                    <dc-schema>oaire</dc-schema>
-                    <dc-element>citation</dc-element>
-                    <dc-qualifier>volume</dc-qualifier>
-                    <repeatable>false</repeatable>
-                    <label>Volume</label>
-                    <input-type>onebox</input-type>
-                    <hint>Enter the volume of the item.</hint>
-                    <required></required>
-                </field>
-            </row>
-            <row>
-                <field>
-                    <dc-schema>oaire</dc-schema>
-                    <dc-element>citation</dc-element>
-                    <dc-qualifier>issue</dc-qualifier>
-                    <repeatable>false</repeatable>
-                    <label>Issue</label>
-                    <input-type>onebox</input-type>
-                    <hint>Enter the issue number of the item.</hint>
-                    <required></required>
-                </field>
-            </row>
-            <row>
-                <field>
-                    <dc-schema>oaire</dc-schema>
-                    <dc-element>citation</dc-element>
-                    <dc-qualifier>edition</dc-qualifier>
-                    <repeatable>false</repeatable>
-                    <label>Edition</label>
-                    <input-type>onebox</input-type>
-                    <hint>Enter the edition of the item.</hint>
-                    <required></required>
-                </field>
-            </row>
-            <row>
-                <field>
-                    <dc-schema>oaire</dc-schema>
-                    <dc-element>citation</dc-element>
-                    <dc-qualifier>startPage</dc-qualifier>
-                    <repeatable>false</repeatable>
-                    <label>First Page</label>
-                    <input-type>onebox</input-type>
-                    <hint>Enter the start page number.</hint>
-                    <required></required>
+                    <hint>Provide the publication date (year is required; month and day are optional).</hint>
                 </field>
                 <field>
-                    <dc-schema>oaire</dc-schema>
-                    <dc-element>citation</dc-element>
-                    <dc-qualifier>endPage</dc-qualifier>
-                    <repeatable>false</repeatable>
-                    <label>Last Page</label>
-                    <input-type>onebox</input-type>
-                    <hint>Enter the last page number.</hint>
-                    <required></required>
-                </field>
-            </row>
-            <row>
-                <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>type</dc-element>
-                    <dc-qualifier></dc-qualifier>
-                    <repeatable>true</repeatable>
-                    <label>Type</label>
-                    <input-type value-pairs-name="openaire_types">dropdown</input-type>
-                    <hint>Select the type(s) of content of the item. To select more than one value in the list, you may
-                        have to hold down the "CTRL" or "Shift" key.
-                    </hint>
-                    <required>You must choose at least one type.</required>
-                </field>
-            </row>
-            <row>
-                <field>
-                    <dc-schema>oaire</dc-schema>
-                    <dc-element>version</dc-element>
-                    <repeatable>false</repeatable>
-                    <label>Resource Version</label>
-                    <input-type value-pairs-name="openaire_version_types">dropdown</input-type>
-                    <hint>Select the version of the resource. If the resource does not have that information, please
-                        select "Not Applicable (or Unknown)".</hint>
-                    <required></required>
-                </field>
-                <field>
-                    <dc-schema>dc</dc-schema>
+                    <dc-schema>publication</dc-schema>
                     <dc-element>language</dc-element>
-                    <dc-qualifier>iso</dc-qualifier>
-                    <repeatable>false</repeatable>
                     <label>Language</label>
                     <input-type value-pairs-name="common_iso_languages">dropdown</input-type>
-                    <hint>Select the language of the main content of the item. If the language does not appear in the
-                        list, please select 'Other'. If the content does not really have a language (for example, if it
-                        is a dataset or an image) please select 'N/A'.
-                    </hint>
-                    <required></required>
+                    <hint>Select the primary language of the publication.</hint>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>publication</dc-schema>
+                    <dc-element>access</dc-element>
+                    <label>Access Rights</label>
+                    <input-type value-pairs-name="openaire_rights">dropdown</input-type>
+                    <hint>Specify how this publication can be accessed.</hint>
+                </field>
+                <field>
+                    <dc-schema>publication</dc-schema>
+                    <dc-element>version</dc-element>
+                    <label>Version</label>
+                    <input-type value-pairs-name="openaire_version_types">dropdown</input-type>
+                    <hint>Select the version of the publication.</hint>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>publication</dc-schema>
+                    <dc-element>type</dc-element>
+                    <repeatable>true</repeatable>
+                    <label>Resource Type</label>
+                    <input-type value-pairs-name="openaire_types">dropdown</input-type>
+                    <hint>Choose the resource type that best describes this publication.</hint>
+                    <required>Select at least one resource type.</required>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>publication</dc-schema>
+                    <dc-element>identifier</dc-element>
+                    <repeatable>true</repeatable>
+                    <label>Identifiers</label>
+                    <input-type value-pairs-name="openaire_publication_identifier_types">qualdrop_value</input-type>
+                    <hint>Add identifiers such as DOI, ISSN or ISBN.</hint>
+                </field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isPartOfPublication</relationship-type>
+                    <search-configuration>publication</search-configuration>
+                    <repeatable>false</repeatable>
+                    <label>Parent Publication</label>
+                    <hint>Link the journal, book or proceedings this publication belongs to.</hint>
+                    <linked-metadata-field>
+                        <dc-schema>publication</dc-schema>
+                        <dc-element>publishedIn</dc-element>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                </relation-field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>publication</dc-schema>
+                    <dc-element>volume</dc-element>
+                    <label>Volume</label>
+                    <input-type>onebox</input-type>
+                    <hint>Enter the volume number where applicable.</hint>
+                </field>
+                <field>
+                    <dc-schema>publication</dc-schema>
+                    <dc-element>issue</dc-element>
+                    <label>Issue</label>
+                    <input-type>onebox</input-type>
+                    <hint>Enter the issue number where applicable.</hint>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>publication</dc-schema>
+                    <dc-element>startPage</dc-element>
+                    <label>Start Page</label>
+                    <input-type>onebox</input-type>
+                    <hint>Enter the first page for the publication.</hint>
+                </field>
+                <field>
+                    <dc-schema>publication</dc-schema>
+                    <dc-element>endPage</dc-element>
+                    <label>End Page</label>
+                    <input-type>onebox</input-type>
+                    <hint>Enter the last page for the publication.</hint>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>publication</dc-schema>
+                    <dc-element>license</dc-element>
+                    <label>License</label>
+                    <input-type value-pairs-name="openaire_license_types">dropdown</input-type>
+                    <hint>Select the license applied to this publication.</hint>
+                </field>
+                <field>
+                    <dc-schema>publication</dc-schema>
+                    <dc-element>license</dc-element>
+                    <dc-qualifier>uri</dc-qualifier>
+                    <label>License URI</label>
+                    <input-type>onebox</input-type>
+                    <hint>Provide the URI of the license if available.</hint>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>publication</dc-schema>
+                    <dc-element>citation</dc-element>
+                    <label>Preferred Citation</label>
+                    <input-type>textarea</input-type>
+                    <hint>Record the preferred bibliographic citation for this publication.</hint>
                 </field>
             </row>
         </form>
@@ -1049,46 +1021,22 @@
         <form name="openairePublicationPagetwoForm">
             <row>
                 <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>subject</dc-element>
-                    <dc-qualifier></dc-qualifier>
-                    <!-- An input-type of tag MUST be marked as repeatable -->
+                    <dc-schema>publication</dc-schema>
+                    <dc-element>keyword</dc-element>
                     <repeatable>true</repeatable>
-                    <label>Subject Keywords</label>
+                    <label>Keywords</label>
                     <input-type>tag</input-type>
-                    <hint>Enter appropriate subject keywords or phrases.</hint>
-                    <required></required>
+                    <hint>Add subject keywords for this publication.</hint>
                     <vocabulary>srsc</vocabulary>
                 </field>
             </row>
-
-            <!-- Additional Subject with specific taxonomy (like mesh, fos, ...) -->
-
-            <!-- example for FOS -->
-            <!-- <row>
-                <field>
-                    <dc-schema>datacite</dc-schema>
-                    <dc-element>subject</dc-element>
-                    <dc-qualifier>fos</dc-qualifier>
-                    <repeatable>true</repeatable>
-                    <label>Subject Keywords (Fields of Science and Technology - OECD) </label>
-                    <input-type>tag</input-type>
-                    <hint>Enter appropriate subject keywords or phrases based on the defined taxonomy.</hint>
-                    <required></required>
-                    <vocabulary>fos</vocabulary>
-                </field>
-            </row> -->
-
             <row>
                 <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>description</dc-element>
-                    <dc-qualifier>abstract</dc-qualifier>
-                    <repeatable>false</repeatable>
+                    <dc-schema>publication</dc-schema>
+                    <dc-element>abstract</dc-element>
                     <label>Abstract</label>
                     <input-type>textarea</input-type>
-                    <hint>Enter the abstract of the item.</hint>
-                    <required></required>
+                    <hint>Provide the abstract or summary of the publication.</hint>
                 </field>
             </row>
             <row>
@@ -1096,40 +1044,89 @@
                     <relationship-type>isProjectOfPublication</relationship-type>
                     <search-configuration>project</search-configuration>
                     <repeatable>true</repeatable>
-                    <name-variants>false</name-variants>
-                    <label>Funding</label>
-                    <hint>Add a related Funding</hint>
+                    <label>Related Project</label>
+                    <hint>Link projects that funded or generated this publication.</hint>
                     <linked-metadata-field>
-                        <dc-schema>dc</dc-schema>
-                        <dc-element>relation</dc-element>
+                        <dc-schema>publication</dc-schema>
+                        <dc-element>project</dc-element>
                         <input-type>onebox</input-type>
                     </linked-metadata-field>
                     <externalsources>openaireFunding</externalsources>
-                    <required></required>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isFundingOfPublication</relationship-type>
+                    <search-configuration>funding</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Funding Scheme</label>
+                    <hint>Link funding programmes supporting this publication.</hint>
+                    <linked-metadata-field>
+                        <dc-schema>publication</dc-schema>
+                        <dc-element>funding</dc-element>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isReferencedByPublication</relationship-type>
+                    <search-configuration>product</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Referenced Dataset or Software</label>
+                    <hint>Link research products referenced by this publication.</hint>
+                    <linked-metadata-field>
+                        <dc-schema>publication</dc-schema>
+                        <dc-element>references</dc-element>
+                        <dc-qualifier>dataset</dc-qualifier>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>references</relationship-type>
+                    <search-configuration>publication</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Referenced Publication</label>
+                    <hint>Link related publications cited by this work.</hint>
+                    <linked-metadata-field>
+                        <dc-schema>publication</dc-schema>
+                        <dc-element>references</dc-element>
+                        <dc-qualifier>publication</dc-qualifier>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isEventOfPublication</relationship-type>
+                    <search-configuration>event</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Related Event</label>
+                    <hint>Link events such as conferences or workshops associated with this publication.</hint>
+                    <linked-metadata-field>
+                        <dc-schema>publication</dc-schema>
+                        <dc-element>event</dc-element>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
                 </relation-field>
             </row>
             <row>
                 <field>
-                    <dc-schema>dc</dc-schema>
-                    <dc-element>coverage</dc-element>
-                    <dc-qualifier></dc-qualifier>
-                    <repeatable>false</repeatable>
-                    <label>Coverage</label>
-                    <input-type>onebox</input-type>
-                    <hint>Enter the coverage of the item, like a period, jurisdiction, etc.</hint>
-                    <required></required>
+                    <dc-schema>publication</dc-schema>
+                    <dc-element>access</dc-element>
+                    <dc-qualifier>embargo-end-date</dc-qualifier>
+                    <label>Embargo End Date</label>
+                    <input-type>date</input-type>
+                    <hint>Set the embargo end date when access is restricted.</hint>
                 </field>
-            </row>
-            <row>
                 <field>
-                    <dc-schema>dc</dc-schema>
+                    <dc-schema>publication</dc-schema>
                     <dc-element>description</dc-element>
-                    <dc-qualifier></dc-qualifier>
-                    <repeatable>false</repeatable>
-                    <label>Description</label>
+                    <label>Additional Description</label>
                     <input-type>textarea</input-type>
-                    <hint>Enter any other description or comments in this box.</hint>
-                    <required></required>
+                    <hint>Include any supplementary description.</hint>
                 </field>
             </row>
         </form>
@@ -1139,36 +1136,59 @@
                 <field>
                     <dc-schema>person</dc-schema>
                     <dc-element>familyName</dc-element>
-                    <label>Last name</label>
+                    <label>Family Name</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter surname or last name of the person</hint>
+                    <hint>Enter the family or last name.</hint>
                 </field>
                 <field>
                     <dc-schema>person</dc-schema>
                     <dc-element>givenName</dc-element>
-                    <label>First name</label>
+                    <label>Given Name</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter personal or first name of the person</hint>
+                    <hint>Enter the personal or first name.</hint>
                 </field>
             </row>
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>title</dc-element>
-                    <label>Author preferred name</label>
+                    <label>Display Name</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the preferred name of this person regarding the authorship</hint>
+                    <hint>Provide the preferred display name for this person.</hint>
+                </field>
+                <field>
+                    <dc-schema>person</dc-schema>
+                    <dc-element>jobTitle</dc-element>
+                    <label>Job Title</label>
+                    <input-type>onebox</input-type>
+                    <hint>Enter the current job title or role.</hint>
                 </field>
             </row>
             <row>
                 <field>
                     <dc-schema>person</dc-schema>
-                    <dc-element>affiliation</dc-element>
-                    <dc-qualifier>name</dc-qualifier>
+                    <dc-element>birthDate</dc-element>
+                    <label>Birth Date</label>
+                    <input-type>date</input-type>
+                    <hint>Provide the birth date where relevant.</hint>
+                </field>
+                <field>
+                    <dc-schema>person</dc-schema>
+                    <dc-element>knowsLanguage</dc-element>
                     <repeatable>true</repeatable>
-                    <label>Affiliation Name</label>
+                    <label>Languages</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the organizational or institutional affiliation of this person</hint>
+                    <hint>List known languages using IETF language codes (e.g. en, pt-BR).</hint>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>person</dc-schema>
+                    <dc-element>identifier</dc-element>
+                    <repeatable>true</repeatable>
+                    <label>Identifiers</label>
+                    <input-type value-pairs-name="openaire_author_identifier_types">qualdrop_value</input-type>
+                    <hint>Add persistent identifiers such as ORCID, ResearcherID, Scopus Author ID, etc.</hint>
                 </field>
             </row>
             <row>
@@ -1178,72 +1198,388 @@
                     <repeatable>true</repeatable>
                     <label>Email</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the email of the person</hint>
+                    <hint>Enter one or more email addresses.</hint>
+                </field>
+                <field>
+                    <dc-schema>person</dc-schema>
+                    <dc-element>electronicAddress</dc-element>
+                    <repeatable>true</repeatable>
+                    <label>Electronic Address</label>
+                    <input-type>onebox</input-type>
+                    <hint>Capture additional electronic contacts such as profiles or websites.</hint>
                 </field>
             </row>
             <row>
                 <field>
                     <dc-schema>person</dc-schema>
-                    <dc-element>identifier</dc-element>
-                    <dc-qualifier></dc-qualifier>
-                    <!-- An input-type of qualdrop_value MUST be marked as repeatable -->
+                    <dc-element>telephone</dc-element>
                     <repeatable>true</repeatable>
-                    <label>Author identifier</label>
-                    <input-type value-pairs-name="openaire_author_identifier_types">qualdrop_value</input-type>
-                    <hint>If the author has any identifiers or codes associated with
-                        it, please enter the types and the actual numbers or codes.
-                    </hint>
-                    <required></required>
+                    <label>Telephone</label>
+                    <input-type>onebox</input-type>
+                    <hint>Provide telephone numbers when applicable.</hint>
                 </field>
+                <field>
+                    <dc-schema>person</dc-schema>
+                    <dc-element>fax</dc-element>
+                    <repeatable>true</repeatable>
+                    <label>Fax</label>
+                    <input-type>onebox</input-type>
+                    <hint>Add fax numbers if relevant.</hint>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>person</dc-schema>
+                    <dc-element>affiliation</dc-element>
+                    <dc-qualifier>name</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Affiliation (text)</label>
+                    <input-type>onebox</input-type>
+                    <hint>Record affiliation names when a relationship link is not available.</hint>
+                </field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isAffiliationOfPerson</relationship-type>
+                    <search-configuration>orgunit</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Affiliated Organisation</label>
+                    <hint>Link organisational units associated with this person.</hint>
+                    <linked-metadata-field>
+                        <dc-schema>person</dc-schema>
+                        <dc-element>affiliation</dc-element>
+                        <dc-qualifier>name</dc-qualifier>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                    <externalsources>ror</externalsources>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isAuthorOfPublication</relationship-type>
+                    <search-configuration>publication</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Authored Publication</label>
+                    <hint>Link publications authored by this person.</hint>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isEditorOfPublication</relationship-type>
+                    <search-configuration>publication</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Edited Publication</label>
+                    <hint>Link publications edited by this person.</hint>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isContributorOfPublication</relationship-type>
+                    <search-configuration>publication</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Other Publication Contribution</label>
+                    <hint>Link publications where this person contributed in another role.</hint>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isCreatorOfProduct</relationship-type>
+                    <search-configuration>product</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Created Product</label>
+                    <hint>Link research products created by this person.</hint>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isContributorOfProduct</relationship-type>
+                    <search-configuration>product</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Product Contribution</label>
+                    <hint>Link products to which this person contributed.</hint>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isResearcherOfProject</relationship-type>
+                    <search-configuration>project</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Project Participation</label>
+                    <hint>Link projects where this person participated.</hint>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isPrincipalInvestigatorOfProject</relationship-type>
+                    <search-configuration>project</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Principal Investigator Role</label>
+                    <hint>Link projects where this person served as principal investigator.</hint>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isEventOfPerson</relationship-type>
+                    <search-configuration>event</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Event Participation</label>
+                    <hint>Link events such as conferences or workshops associated with this person.</hint>
+                </relation-field>
             </row>
         </form>
 
         <form name="openaireProjectForm">
             <row>
                 <field>
-                    <dc-schema>dc</dc-schema>
+                    <dc-schema>project</dc-schema>
                     <dc-element>title</dc-element>
-                    <label>Project name</label>
+                    <label>Project Title</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the name of the project</hint>
+                    <hint>Enter the full title of the project.</hint>
+                </field>
+                <field>
+                    <dc-schema>project</dc-schema>
+                    <dc-element>acronym</dc-element>
+                    <label>Acronym</label>
+                    <input-type>onebox</input-type>
+                    <hint>Provide the short name or acronym.</hint>
                 </field>
             </row>
             <row>
                 <field>
-                    <dc-schema>dc</dc-schema>
+                    <dc-schema>project</dc-schema>
                     <dc-element>identifier</dc-element>
-                    <dc-qualifier>uri</dc-qualifier>
-                    <label>Project web page</label>
+                    <dc-qualifier>project-reference</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Project Reference</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the URL of the project webpage</hint>
+                    <hint>Add grant agreement or project reference numbers.</hint>
+                </field>
+                <field>
+                    <dc-schema>project</dc-schema>
+                    <dc-element>identifier</dc-element>
+                    <dc-qualifier>url</dc-qualifier>
+                    <label>Project Website</label>
+                    <input-type>onebox</input-type>
+                    <hint>Enter the public project website (if available).</hint>
                 </field>
             </row>
-            <!-- <row>
-                <relation-field>
-                    <relationship-type>isFundingAgencyOfProject</relationship-type>
-                    <search-configuration>openaireFundingAgency</search-configuration>
-                    <repeatable>false</repeatable>
-                    <name-variants>false</name-variants>
-                    <label>Funding Agency</label>
-                    <hint>Add a Funding Agency</hint>
-                    <linked-metadata-field>
-                        <dc-schema>project</dc-schema>
-                        <dc-element>funder</dc-element>
-                        <dc-qualifier>name</dc-qualifier>
-                        <input-type>onebox</input-type>
-                    </linked-metadata-field>
-                    <externalsources></externalsources>
-                    <required>One funding agency is required</required>
-                </relation-field>
-            </row> -->
+            <row>
+                <field>
+                    <dc-schema>project</dc-schema>
+                    <dc-element>identifier</dc-element>
+                    <repeatable>true</repeatable>
+                    <label>Other Identifiers</label>
+                    <input-type>onebox</input-type>
+                    <hint>Add any additional identifiers associated with the project.</hint>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>project</dc-schema>
+                    <dc-element>identifier</dc-element>
+                    <dc-qualifier>grant-doi</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Grant DOI</label>
+                    <input-type>onebox</input-type>
+                    <hint>Enter any grant DOIs assigned to the project.</hint>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>project</dc-schema>
+                    <dc-element>startDate</dc-element>
+                    <label>Start Date</label>
+                    <input-type>date</input-type>
+                    <hint>Specify the project start date.</hint>
+                </field>
+                <field>
+                    <dc-schema>project</dc-schema>
+                    <dc-element>endDate</dc-element>
+                    <label>End Date</label>
+                    <input-type>date</input-type>
+                    <hint>Specify the project end date.</hint>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>project</dc-schema>
+                    <dc-element>keyword</dc-element>
+                    <repeatable>true</repeatable>
+                    <label>Keywords</label>
+                    <input-type>tag</input-type>
+                    <hint>Add keywords describing the project.</hint>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>project</dc-schema>
+                    <dc-element>abstract</dc-element>
+                    <label>Project Description</label>
+                    <input-type>textarea</input-type>
+                    <hint>Provide a brief abstract or summary of the project.</hint>
+                </field>
+            </row>
             <row>
                 <field>
                     <dc-schema>oaire</dc-schema>
                     <dc-element>fundingStream</dc-element>
-                    <label>Name of the Funding Stream</label>
+                    <repeatable>true</repeatable>
+                    <label>Funding Stream</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the name of the funding stream of the project</hint>
+                    <hint>Record the funding stream or programme name.</hint>
                 </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>project</dc-schema>
+                    <dc-element>oamandate</dc-element>
+                    <label>Open Access Mandate</label>
+                    <input-type value-pairs-name="openaire_boolean">dropdown</input-type>
+                    <hint>Indicate whether the project is subject to an open access mandate.</hint>
+                </field>
+                <field>
+                    <dc-schema>project</dc-schema>
+                    <dc-element>oamandate</dc-element>
+                    <dc-qualifier>uri</dc-qualifier>
+                    <label>Mandate URL</label>
+                    <input-type>onebox</input-type>
+                    <hint>Provide a link to the open access policy, if available.</hint>
+                </field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isFundingAgencyOfProject</relationship-type>
+                    <search-configuration>orgunit</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Funding Organisation</label>
+                    <hint>Link organisations funding this project.</hint>
+                    <linked-metadata-field>
+                        <dc-schema>project</dc-schema>
+                        <dc-element>funder</dc-element>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                    <externalsources>ror</externalsources>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isFundingOfProject</relationship-type>
+                    <search-configuration>funding</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Funding Scheme</label>
+                    <hint>Link funding programmes or calls associated with the project.</hint>
+                    <linked-metadata-field>
+                        <dc-schema>project</dc-schema>
+                        <dc-element>funding</dc-element>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                    <externalsources>openaireFunding</externalsources>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isCoordinatorOfProject</relationship-type>
+                    <search-configuration>orgunit</search-configuration>
+                    <repeatable>false</repeatable>
+                    <label>Coordinator</label>
+                    <hint>Link the organisation coordinating the project.</hint>
+                    <linked-metadata-field>
+                        <dc-schema>project</dc-schema>
+                        <dc-element>consortium</dc-element>
+                        <dc-qualifier>coordinator</dc-qualifier>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                    <externalsources>ror</externalsources>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isPartnerOfProject</relationship-type>
+                    <search-configuration>orgunit</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Consortium Partner</label>
+                    <hint>Link partner organisations in the project consortium.</hint>
+                    <linked-metadata-field>
+                        <dc-schema>project</dc-schema>
+                        <dc-element>consortium</dc-element>
+                        <dc-qualifier>partner</dc-qualifier>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                    <externalsources>ror</externalsources>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isResearcherOfProject</relationship-type>
+                    <search-configuration>person</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Project Researcher</label>
+                    <hint>Link researchers participating in this project.</hint>
+                    <linked-metadata-field>
+                        <dc-schema>project</dc-schema>
+                        <dc-element>investigator</dc-element>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                    <externalsources>orcid</externalsources>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isPrincipalInvestigatorOfProject</relationship-type>
+                    <search-configuration>person</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Principal Investigator</label>
+                    <hint>Link principal investigators for this project.</hint>
+                    <linked-metadata-field>
+                        <dc-schema>project</dc-schema>
+                        <dc-element>investigator</dc-element>
+                        <dc-qualifier>principal</dc-qualifier>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                    <externalsources>orcid</externalsources>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isEquipmentOfProject</relationship-type>
+                    <search-configuration>equipment</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Equipment</label>
+                    <hint>Link equipment used in the project.</hint>
+                    <linked-metadata-field>
+                        <dc-schema>project</dc-schema>
+                        <dc-element>equipment</dc-element>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isPublicationOfProject</relationship-type>
+                    <search-configuration>publication</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Related Publication</label>
+                    <hint>Link publications produced by this project.</hint>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isProductOfProject</relationship-type>
+                    <search-configuration>product</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Related Product</label>
+                    <hint>Link datasets, software or other products generated by this project.</hint>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isEventOfProject</relationship-type>
+                    <search-configuration>event</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Related Event</label>
+                    <hint>Link conferences or events organised or funded by this project.</hint>
+                </relation-field>
             </row>
         </form>
 
@@ -1252,34 +1588,42 @@
                 <field>
                     <dc-schema>orgunit</dc-schema>
                     <dc-element>name</dc-element>
-                    <label>Organization name</label>
+                    <label>Organization Name</label>
                     <input-type>onebox</input-type>
-                    <hint>Enter the name of the orgunit or organization</hint>
+                    <hint>Enter the full name of the organisation.</hint>
+                </field>
+                <field>
+                    <dc-schema>orgunit</dc-schema>
+                    <dc-element>acronym</dc-element>
+                    <label>Acronym</label>
+                    <input-type>onebox</input-type>
+                    <hint>Optionally provide the short name or acronym.</hint>
                 </field>
             </row>
             <row>
                 <field>
                     <dc-schema>orgunit</dc-schema>
                     <dc-element>identifier</dc-element>
-                    <dc-qualifier></dc-qualifier>
-                    <!-- An input-type of qualdrop_value MUST be marked as repeatable -->
                     <repeatable>true</repeatable>
-                    <label>Organization identifier</label>
+                    <label>Organization Identifier</label>
                     <input-type value-pairs-name="openaire_organization_identifier_types">qualdrop_value</input-type>
-                    <hint>If the organization has any identifiers or codes associated with
-                        it, please enter the types and the actual numbers or codes.
-                    </hint>
-                    <required></required>
+                    <hint>Select the identifier type and provide the corresponding value.</hint>
+                </field>
+                <field>
+                    <dc-schema>orgunit</dc-schema>
+                    <dc-element>electronicAddress</dc-element>
+                    <label>Website</label>
+                    <input-type>onebox</input-type>
+                    <hint>Enter the primary website or contact URL.</hint>
                 </field>
             </row>
             <row>
                 <field>
                     <dc-schema>dc</dc-schema>
                     <dc-element>type</dc-element>
-                    <label>Organization type</label>
+                    <label>Organization Role</label>
                     <input-type value-pairs-name="openaire_organization_types">dropdown</input-type>
-                    <hint>Choose the attributes of the Organization</hint>
-                    <required></required>
+                    <hint>Describe the role played by this organisation.</hint>
                 </field>
             </row>
             <row>
@@ -1288,8 +1632,527 @@
                     <dc-element>description</dc-element>
                     <label>Description</label>
                     <input-type>textarea</input-type>
-                    <hint>Enter the description of the orgunit</hint>
+                    <hint>Summarize the organisation’s mission or activities.</hint>
                 </field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isPartOfOrgUnit</relationship-type>
+                    <search-configuration>orgunit</search-configuration>
+                    <repeatable>false</repeatable>
+                    <label>Parent Organisation</label>
+                    <hint>Link to the parent organisation, if applicable.</hint>
+                    <externalsources>ror</externalsources>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isPersonOfAffiliation</relationship-type>
+                    <search-configuration>person</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Affiliated People</label>
+                    <hint>Associate people affiliated with this organisation.</hint>
+                    <externalsources>orcid</externalsources>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isProjectOfFundingAgency</relationship-type>
+                    <search-configuration>project</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Funded Projects</label>
+                    <hint>Link projects funded by this organisation.</hint>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isProjectOfCoordinator</relationship-type>
+                    <search-configuration>project</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Coordinated Projects</label>
+                    <hint>Link projects coordinated by this organisation.</hint>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isProjectOfPartner</relationship-type>
+                    <search-configuration>project</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Consortium Projects</label>
+                    <hint>Link projects where this organisation is a partner.</hint>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isPublicationOfPublisher</relationship-type>
+                    <search-configuration>publication</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Published Outputs</label>
+                    <hint>Link publications published by this organisation.</hint>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isFundingOfOrgUnit</relationship-type>
+                    <search-configuration>funding</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Funding Schemes</label>
+                    <hint>Associate funding programmes managed by this organisation.</hint>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isEquipmentOfOrgUnit</relationship-type>
+                    <search-configuration>equipment</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Research Equipment</label>
+                    <hint>Link equipment operated by this organisation.</hint>
+                </relation-field>
+            </row>
+        </form>
+
+        <form name="openaireProductForm">
+            <row>
+                <field>
+                    <dc-schema>product</dc-schema>
+                    <dc-element>name</dc-element>
+                    <label>Product Title</label>
+                    <input-type>onebox</input-type>
+                    <hint>Name or title of the research product.</hint>
+                </field>
+                <field>
+                    <dc-schema>product</dc-schema>
+                    <dc-element>type</dc-element>
+                    <label>Product Type</label>
+                    <input-type value-pairs-name="openaire_product_resource_types">dropdown</input-type>
+                    <hint>Select the type of product.</hint>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>product</dc-schema>
+                    <dc-element>versionInfo</dc-element>
+                    <label>Version</label>
+                    <input-type>onebox</input-type>
+                    <hint>Provide version details, if applicable.</hint>
+                </field>
+                <field>
+                    <dc-schema>product</dc-schema>
+                    <dc-element>access</dc-element>
+                    <label>Access Rights</label>
+                    <input-type value-pairs-name="openaire_rights">dropdown</input-type>
+                    <hint>Specify the access conditions for the product.</hint>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>product</dc-schema>
+                    <dc-element>identifier</dc-element>
+                    <dc-qualifier>doi</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>DOI</label>
+                    <input-type>onebox</input-type>
+                    <hint>Add any Digital Object Identifiers for the product.</hint>
+                </field>
+                <field>
+                    <dc-schema>product</dc-schema>
+                    <dc-element>identifier</dc-element>
+                    <dc-qualifier>url</dc-qualifier>
+                    <repeatable>true</repeatable>
+                    <label>Product URL</label>
+                    <input-type>onebox</input-type>
+                    <hint>Provide access URLs for the product.</hint>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>product</dc-schema>
+                    <dc-element>identifier</dc-element>
+                    <repeatable>true</repeatable>
+                    <label>Additional Identifiers</label>
+                    <input-type>onebox</input-type>
+                    <hint>List any other identifiers (catalog numbers, internal IDs, etc.).</hint>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>product</dc-schema>
+                    <dc-element>description</dc-element>
+                    <label>Description</label>
+                    <input-type>textarea</input-type>
+                    <hint>Describe the product, its scope, and content.</hint>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>product</dc-schema>
+                    <dc-element>keyword</dc-element>
+                    <repeatable>true</repeatable>
+                    <label>Keywords</label>
+                    <input-type>tag</input-type>
+                    <hint>Add subject keywords for discovery.</hint>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>product</dc-schema>
+                    <dc-element>date</dc-element>
+                    <dc-qualifier>collected-start</dc-qualifier>
+                    <label>Collection Start</label>
+                    <input-type>date</input-type>
+                    <hint>Start date for data collection (if relevant).</hint>
+                </field>
+                <field>
+                    <dc-schema>product</dc-schema>
+                    <dc-element>date</dc-element>
+                    <dc-qualifier>collected-end</dc-qualifier>
+                    <label>Collection End</label>
+                    <input-type>date</input-type>
+                    <hint>End date for data collection.</hint>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>product</dc-schema>
+                    <dc-element>date</dc-element>
+                    <dc-qualifier>available</dc-qualifier>
+                    <label>Availability Date</label>
+                    <input-type>date</input-type>
+                    <hint>Date when the product became available.</hint>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>product</dc-schema>
+                    <dc-element>license</dc-element>
+                    <label>License</label>
+                    <input-type value-pairs-name="openaire_license_types">dropdown</input-type>
+                    <hint>Select the licence applied to the product.</hint>
+                </field>
+                <field>
+                    <dc-schema>product</dc-schema>
+                    <dc-element>license</dc-element>
+                    <dc-qualifier>uri</dc-qualifier>
+                    <label>License URL</label>
+                    <input-type>onebox</input-type>
+                    <hint>Provide the licence URI, if not covered above.</hint>
+                </field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isCreatorOfProduct</relationship-type>
+                    <search-configuration>person</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Creators (People)</label>
+                    <hint>Link people responsible for creating the product.</hint>
+                    <linked-metadata-field>
+                        <dc-schema>product</dc-schema>
+                        <dc-element>creator</dc-element>
+                        <dc-qualifier>name</dc-qualifier>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                    <externalsources>orcid</externalsources>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isCreatorOfProduct</relationship-type>
+                    <search-configuration>orgunit</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Creators (Organisations)</label>
+                    <hint>Link organisations involved in creating the product.</hint>
+                    <linked-metadata-field>
+                        <dc-schema>product</dc-schema>
+                        <dc-element>creator</dc-element>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                    <externalsources>ror</externalsources>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isContributorOfProduct</relationship-type>
+                    <search-configuration>person</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Contributors (People)</label>
+                    <hint>Link individuals who contributed to the product.</hint>
+                    <externalsources>orcid</externalsources>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isContributorOfProduct</relationship-type>
+                    <search-configuration>orgunit</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Contributors (Organisations)</label>
+                    <hint>Link organisations contributing to the product.</hint>
+                    <externalsources>ror</externalsources>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isHostedByOrgUnit</relationship-type>
+                    <search-configuration>orgunit</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Hosting Organisations</label>
+                    <hint>Link organisations hosting or curating the product.</hint>
+                    <linked-metadata-field>
+                        <dc-schema>product</dc-schema>
+                        <dc-element>contributor</dc-element>
+                        <dc-qualifier>hosting-institution</dc-qualifier>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                    <externalsources>ror</externalsources>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isProjectOfProduct</relationship-type>
+                    <search-configuration>project</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Originating Projects</label>
+                    <hint>Link projects that produced this product.</hint>
+                    <linked-metadata-field>
+                        <dc-schema>product</dc-schema>
+                        <dc-element>project</dc-element>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isFundingOfProduct</relationship-type>
+                    <search-configuration>funding</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Funding Schemes</label>
+                    <hint>Link funding programmes that supported the product.</hint>
+                    <externalsources>openaireFunding</externalsources>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isEquipmentOfProduct</relationship-type>
+                    <search-configuration>equipment</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Generating Equipment</label>
+                    <hint>Link equipment used to generate or capture the product.</hint>
+                    <linked-metadata-field>
+                        <dc-schema>product</dc-schema>
+                        <dc-element>equipment</dc-element>
+                        <input-type>onebox</input-type>
+                    </linked-metadata-field>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isPublicationOfProduct</relationship-type>
+                    <search-configuration>publication</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Related Publications</label>
+                    <hint>Link publications describing or referencing this product.</hint>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isPartOfProduct</relationship-type>
+                    <search-configuration>product</search-configuration>
+                    <repeatable>false</repeatable>
+                    <label>Parent Product</label>
+                    <hint>Link a parent product when this is a component.</hint>
+                </relation-field>
+            </row>
+        </form>
+
+        <form name="openaireFundingForm">
+            <row>
+                <field>
+                    <dc-schema>funding</dc-schema>
+                    <dc-element>name</dc-element>
+                    <label>Funding Programme</label>
+                    <input-type>onebox</input-type>
+                    <hint>Enter the full name of the funding scheme.</hint>
+                </field>
+                <field>
+                    <dc-schema>funding</dc-schema>
+                    <dc-element>acronym</dc-element>
+                    <label>Acronym</label>
+                    <input-type>onebox</input-type>
+                    <hint>Provide the short name or acronym.</hint>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>funding</dc-schema>
+                    <dc-element>type</dc-element>
+                    <label>Funding Type</label>
+                    <input-type value-pairs-name="openaire_funding_types">dropdown</input-type>
+                    <hint>Select the stage or type of funding.</hint>
+                </field>
+                <field>
+                    <dc-schema>funding</dc-schema>
+                    <dc-element>identifier</dc-element>
+                    <repeatable>true</repeatable>
+                    <label>Identifier</label>
+                    <input-type>onebox</input-type>
+                    <hint>Add grant numbers or registry identifiers.</hint>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>funding</dc-schema>
+                    <dc-element>grantDOI</dc-element>
+                    <repeatable>true</repeatable>
+                    <label>Grant DOI</label>
+                    <input-type>onebox</input-type>
+                    <hint>List DOIs assigned to this funding.</hint>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>funding</dc-schema>
+                    <dc-element>duration</dc-element>
+                    <dc-qualifier>startDate</dc-qualifier>
+                    <label>Start Date</label>
+                    <input-type>date</input-type>
+                    <hint>Start date of the funding availability.</hint>
+                </field>
+                <field>
+                    <dc-schema>funding</dc-schema>
+                    <dc-element>duration</dc-element>
+                    <dc-qualifier>endDate</dc-qualifier>
+                    <label>End Date</label>
+                    <input-type>date</input-type>
+                    <hint>End date of the funding availability.</hint>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>funding</dc-schema>
+                    <dc-element>oamandate</dc-element>
+                    <label>Open Access Mandate</label>
+                    <input-type value-pairs-name="openaire_boolean">dropdown</input-type>
+                    <hint>Indicate whether the funding enforces an OA mandate.</hint>
+                </field>
+                <field>
+                    <dc-schema>funding</dc-schema>
+                    <dc-element>oamandate</dc-element>
+                    <dc-qualifier>uri</dc-qualifier>
+                    <label>Mandate URL</label>
+                    <input-type>onebox</input-type>
+                    <hint>Link to the policy describing the OA mandate.</hint>
+                </field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isPartOfFunding</relationship-type>
+                    <search-configuration>funding</search-configuration>
+                    <repeatable>false</repeatable>
+                    <label>Parent Funding</label>
+                    <hint>Link a parent programme or umbrella scheme.</hint>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isProjectOfFunding</relationship-type>
+                    <search-configuration>project</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Supported Projects</label>
+                    <hint>Link projects financed by this funding.</hint>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isPublicationOfFunding</relationship-type>
+                    <search-configuration>publication</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Resulting Publications</label>
+                    <hint>Link publications acknowledging this funding.</hint>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isProductOfFunding</relationship-type>
+                    <search-configuration>product</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Resulting Products</label>
+                    <hint>Link datasets, software, or other products funded.</hint>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isOrgUnitOfFunding</relationship-type>
+                    <search-configuration>orgunit</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Managing Organisations</label>
+                    <hint>Link organisations administering the funding.</hint>
+                    <externalsources>ror</externalsources>
+                </relation-field>
+            </row>
+        </form>
+
+        <form name="openaireEquipmentForm">
+            <row>
+                <field>
+                    <dc-schema>equipment</dc-schema>
+                    <dc-element>name</dc-element>
+                    <label>Equipment Name</label>
+                    <input-type>onebox</input-type>
+                    <hint>Provide the name or description of the equipment.</hint>
+                </field>
+                <field>
+                    <dc-schema>equipment</dc-schema>
+                    <dc-element>type</dc-element>
+                    <label>Equipment Type</label>
+                    <input-type value-pairs-name="openaire_equipment_types">dropdown</input-type>
+                    <hint>Select the category that best fits this equipment.</hint>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>equipment</dc-schema>
+                    <dc-element>identifier</dc-element>
+                    <repeatable>true</repeatable>
+                    <label>Identifier</label>
+                    <input-type>onebox</input-type>
+                    <hint>Record inventory or registration identifiers.</hint>
+                </field>
+            </row>
+            <row>
+                <field>
+                    <dc-schema>equipment</dc-schema>
+                    <dc-element>description</dc-element>
+                    <label>Description</label>
+                    <input-type>textarea</input-type>
+                    <hint>Describe the equipment, specifications, and usage.</hint>
+                </field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isOrgUnitOfEquipment</relationship-type>
+                    <search-configuration>orgunit</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Operating Organisations</label>
+                    <hint>Link organisations responsible for operating the equipment.</hint>
+                    <externalsources>ror</externalsources>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isProjectOfEquipment</relationship-type>
+                    <search-configuration>project</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Associated Projects</label>
+                    <hint>Link projects that make use of this equipment.</hint>
+                </relation-field>
+            </row>
+            <row>
+                <relation-field>
+                    <relationship-type>isProductOfEquipment</relationship-type>
+                    <search-configuration>product</search-configuration>
+                    <repeatable>true</repeatable>
+                    <label>Generated Products</label>
+                    <hint>Link datasets or outputs generated using this equipment.</hint>
+                </relation-field>
             </row>
         </form>
 
@@ -1870,6 +2733,142 @@
             </pair>
         </value-pairs>
 
+        <value-pairs value-pairs-name="openaire_publication_identifier_types" dc-term="identifier">
+            <pair>
+                <displayed-value>Digital Object Identifier (DOI)</displayed-value>
+                <stored-value>doi</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Handle</displayed-value>
+                <stored-value>handle</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>PubMed ID (PMID)</displayed-value>
+                <stored-value>pmid</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>PubMed Central ID (PMCID)</displayed-value>
+                <stored-value>pmcid</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>arXiv</displayed-value>
+                <stored-value>arxiv</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>URL</displayed-value>
+                <stored-value>url</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Uniform Resource Name (URN)</displayed-value>
+                <stored-value>urn</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>International Standard Book Number (ISBN)</displayed-value>
+                <stored-value>isbn</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>International Standard Serial Number (ISSN)</displayed-value>
+                <stored-value>issn</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Other</displayed-value>
+                <stored-value></stored-value>
+            </pair>
+        </value-pairs>
+
+        <value-pairs value-pairs-name="openaire_product_resource_types" dc-term="type">
+            <pair>
+                <displayed-value>Dataset</displayed-value>
+                <stored-value>dataset</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Software</displayed-value>
+                <stored-value>software</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Workflow</displayed-value>
+                <stored-value>workflow</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Image</displayed-value>
+                <stored-value>image</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Sound</displayed-value>
+                <stored-value>sound</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Text</displayed-value>
+                <stored-value>text</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Interactive Resource</displayed-value>
+                <stored-value>interactive resource</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Other</displayed-value>
+                <stored-value>other</stored-value>
+            </pair>
+        </value-pairs>
+
+        <value-pairs value-pairs-name="openaire_funding_types" dc-term="type">
+            <pair>
+                <displayed-value>Funding Programme</displayed-value>
+                <stored-value>FundingProgramme</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Call for Proposals</displayed-value>
+                <stored-value>Call</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Contract</displayed-value>
+                <stored-value>Contract</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Grant</displayed-value>
+                <stored-value>Grant</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Award</displayed-value>
+                <stored-value>Award</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Scholarship/Fellowship</displayed-value>
+                <stored-value>Scholarship</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Other</displayed-value>
+                <stored-value>Other</stored-value>
+            </pair>
+        </value-pairs>
+
+        <value-pairs value-pairs-name="openaire_equipment_types" dc-term="type">
+            <pair>
+                <displayed-value>Scientific Instrument</displayed-value>
+                <stored-value>instrument</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Facility</displayed-value>
+                <stored-value>facility</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Laboratory</displayed-value>
+                <stored-value>laboratory</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Software Tool</displayed-value>
+                <stored-value>software</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Service</displayed-value>
+                <stored-value>service</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Other</displayed-value>
+                <stored-value>other</stored-value>
+            </pair>
+        </value-pairs>
+
         <value-pairs value-pairs-name="openaire_author_identifier_types" dc-term="identifier">
             <pair>
                 <displayed-value>Scopus Author ID</displayed-value>
@@ -1901,6 +2900,21 @@
             </pair>
         </value-pairs>
 
+        <value-pairs value-pairs-name="openaire_boolean" dc-term="boolean">
+            <pair>
+                <displayed-value>N/A</displayed-value>
+                <stored-value></stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Yes</displayed-value>
+                <stored-value>true</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>No</displayed-value>
+                <stored-value>false</stored-value>
+            </pair>
+        </value-pairs>
+
         <value-pairs value-pairs-name="openaire_organization_identifier_types" dc-term="identifier">
             <pair>
                 <displayed-value>ISNI - International Standard Name Identifier</displayed-value>
@@ -1911,8 +2925,20 @@
                 <stored-value>rin</stored-value>
             </pair>
             <pair>
+                <displayed-value>Crossref Funder Registry (FundRef)</displayed-value>
+                <stored-value>fundref</stored-value>
+            </pair>
+            <pair>
                 <displayed-value>Research Organization Registry</displayed-value>
                 <stored-value>ror</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>Global Research Identifier Database (GRID)</displayed-value>
+                <stored-value>grid</stored-value>
+            </pair>
+            <pair>
+                <displayed-value>VAT Number</displayed-value>
+                <stored-value>vat</stored-value>
             </pair>
             <pair>
                 <displayed-value>Other</displayed-value>
